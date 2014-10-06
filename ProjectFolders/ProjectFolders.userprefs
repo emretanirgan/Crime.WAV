@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\select_level_script.cs">
     <Files>
@@ -10,6 +11,12 @@
       <File FileName="Assets\burglar3_script.cs" Line="1" Column="1" />
       <File FileName="Assets\burglar4_script.cs" Line="16" Column="1" />
       <File FileName="Assets\select_level_script.cs" Line="31" Column="36" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Block.cs">
+    <Files>
+      <File FileName="Assets\Block.cs" Line="20" Column="3" />
+>>>>>>> 85d86e840d1335d9300b310b37f499333367d998
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

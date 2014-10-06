@@ -46,13 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\burglar1_script.cs" />
-     <Compile Include="Assets\burglar2_script.cs" />
-     <Compile Include="Assets\burglar3_script.cs" />
-     <Compile Include="Assets\burglar4_script.cs" />
+     <Compile Include="Assets\Block.cs" />
+     <Compile Include="Assets\BurglarScreens\burglar1_script.cs" />
+     <Compile Include="Assets\BurglarScreens\burglar2_script.cs" />
+     <Compile Include="Assets\BurglarScreens\burglar3_script.cs" />
+     <Compile Include="Assets\BurglarScreens\burglar4_script.cs" />
+     <Compile Include="Assets\BurglarScreens\meet_the_burglars_script.cs" />
+     <Compile Include="Assets\CharacterDriver.cs" />
+     <Compile Include="Assets\GlobalScript.cs" />
+     <Compile Include="Assets\NoteRowScript.cs" />
+     <Compile Include="Assets\NoteScript.cs" />
      <Compile Include="Assets\high_score_script.cs" />
      <Compile Include="Assets\main_menu_script.cs" />
-     <Compile Include="Assets\meet_the_burglars_script.cs" />
      <Compile Include="Assets\select_level_script.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
