@@ -2,49 +2,45 @@
 using System.Collections;
 
 public class CharacterDriver : MonoBehaviour {
-	public Block[] TestArray;
+	public float characterSpeed;
+	public GameObject label;
+	float currentSpeed;
+	int status; //0 - idling, 1 - running, 2 - jumping, 3 - ducking
+
 	// Use this for initialization
 	void Start () {
-		this.renderer.material.color = Color.white;
-		Block a = new Block(1.0f,"hi");
-		Block b = new Block(1.0f,"low");
-		Block c = new Block(1.0f,"mid");
-		TestArray = new Block[3];
-		TestArray[0] = a;
-		TestArray[1] = b;
-		TestArray[2] = c;
-
-		for(int i = 0; i < TestArray.Length; i++){
-			switch(TestArray[i].pitch){
-			case("mid"):
-				this.renderer.material.color = Color.white;
-				print("white");
-				break;
-			case("hi"):
-				this.renderer.material.color = Color.yellow;
-				print("yellow");
-				break;
-			case("low"):
-				this.renderer.material.color = Color.blue;
-				print("blue");
-				break;
-			default:
-				break;
-			}
-			StartCoroutine(delay(TestArray[i].value));
-		}
+		print("started");
+		currentSpeed = 0;
+		status = 0;
+		label.guiText.text = "I am standing.";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
-
-	IEnumerator delay(float t){
-		yield return new WaitForSeconds(t*1000);
+		switch(status){
+		case 2:
+			label.guiText.text = "I am jumping.";
+			break;
+		case 3:
+			label.guiText.text = "I am ducking.";
+			break;
+		default:
+			label.guiText.text = "I am running.";
+			break;
+		}
 	}
 
 	public void animate(string pitch, float value){
-
+		switch(pitch){
+		case("hi"):
+			status = 2;
+			break;
+		case("low"):
+			status = 3;
+			break;
+		default:
+			status = 1;
+			break;
+		}
 	}
 }

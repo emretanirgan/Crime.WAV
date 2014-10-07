@@ -29,6 +29,7 @@ public class NoteRowScript : MonoBehaviour {
 
 	void playNotes() {
 		float noteDelay = 0;
+		noteIndex=0;
 		for(int i=0; i<notes.Count; i++){
 			GameObject go = (GameObject)notes[i];
 			NoteScript ns = go.GetComponent<NoteScript>();
@@ -42,7 +43,7 @@ public class NoteRowScript : MonoBehaviour {
 		NoteScript ns = go.GetComponent<NoteScript>();
 		Debug.Log(ns.pitch);
 		Debug.Log(ns.value);
-		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+noteIndex.ToString());
+		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		cd.animate (ns.pitch, ns.value);
 		//get character from global script/looking at tags and call action method
