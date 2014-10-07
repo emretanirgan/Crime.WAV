@@ -40,7 +40,7 @@ public class ObjectLabel : MonoBehaviour {
 		}
 		else
 		{
-			thisTransform.position = cam.WorldToViewportPoint(target.position + offset);
+			thisTransform.position = cam.WorldToViewportPoint(target.position + offset + new Vector3(0.0f,0.5f,0.0f));
 		}
 	}
 }
