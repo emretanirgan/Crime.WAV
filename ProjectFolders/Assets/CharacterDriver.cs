@@ -43,4 +43,8 @@ public class CharacterDriver : MonoBehaviour {
 	IEnumerator delay(float t){
 		yield return new WaitForSeconds(t*1000);
 	}
+
+	public void animate(string pitch, float value){
+
+	}
 }

@@ -42,6 +42,9 @@ public class NoteRowScript : MonoBehaviour {
 		NoteScript ns = go.GetComponent<NoteScript>();
 		Debug.Log(ns.pitch);
 		Debug.Log(ns.value);
+		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+noteIndex.ToString());
+		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+		cd.animate (ns.pitch, ns.value);
 		//get character from global script/looking at tags and call action method
 		//character.playAction(b.pitch, b.value);
 		noteIndex++;

@@ -1,5 +1,6 @@
 ﻿<Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\select_level_script.cs">
     <Files>
@@ -14,9 +15,18 @@
 =======
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Block.cs">
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NoteRowScript.cs">
+>>>>>>> 3579182061a66af8ff88009aa8e4731491a8ba72
     <Files>
+      <File FileName="Assets\NoteRowScript.cs" Line="24" Column="18" />
       <File FileName="Assets\Block.cs" Line="20" Column="3" />
+<<<<<<< HEAD
 >>>>>>> 85d86e840d1335d9300b310b37f499333367d998
+=======
+      <File FileName="Assets\CharacterDriver.cs" Line="32" Column="11" />
+>>>>>>> 3579182061a66af8ff88009aa8e4731491a8ba72
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
