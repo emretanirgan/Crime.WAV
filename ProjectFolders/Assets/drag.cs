@@ -8,7 +8,7 @@ public class drag : MonoBehaviour {
 	private Vector3 screenPoint;
 	private Vector3 offset;
 
-	public GameObject note; 
+	//public GameObject note; 
 	//private Vector3 initialPos; 
 	private GameObject copyObject; 
 	//public GameObject targetObj;
@@ -81,7 +81,7 @@ public class drag : MonoBehaviour {
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 
 		//initialPos = gameObject.transform.position; 
-		copyObject = Instantiate (note, transform.position, transform.rotation) as GameObject; 
+		copyObject = Instantiate (gameObject, transform.position, transform.rotation) as GameObject; 
 	
 	}
 	
