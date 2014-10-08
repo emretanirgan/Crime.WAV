@@ -19,4 +19,5 @@ public class NoteScript : MonoBehaviour {
 	void Update () {
 		
 	}
+	
 }
