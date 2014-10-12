@@ -57,7 +57,9 @@
      <Compile Include="Assets\NoteRowScript.cs" />
      <Compile Include="Assets\NoteScript.cs" />
      <Compile Include="Assets\ObjectLabel.cs" />
+     <Compile Include="Assets\drag.cs" />
      <Compile Include="Assets\high_score_script.cs" />
+     <Compile Include="Assets\joey_test_scene_script.cs" />
      <Compile Include="Assets\main_menu_script.cs" />
      <Compile Include="Assets\select_level_script.cs" />
   </ItemGroup>

@@ -12,7 +12,12 @@ public class NoteScript : MonoBehaviour {
 	}
 	
 	void Start () {
-		
+		if (pitch == "mid"){
+			gameObject.renderer.material.color = Color.white;
+		}
+		else if (pitch == "low"){
+			gameObject.renderer.material.color = Color.blue;
+		}
 	}
 	
 	// Update is called once per frame

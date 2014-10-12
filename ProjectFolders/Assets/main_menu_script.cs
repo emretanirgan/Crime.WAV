@@ -25,7 +25,8 @@ public class main_menu_script : MonoBehaviour {
 		// The scene needs to be added into build setting to be loaded!
 		if (GUILayout.Button("New Game"))
 		{
-			Application.LoadLevel("play_scene");
+			//Application.LoadLevel("play_scene");
+			Application.LoadLevel("joey_test-scene");
 		}
 		if (GUILayout.Button("Select Level"))
 		{
