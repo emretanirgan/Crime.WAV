@@ -5,8 +5,16 @@ public class CharacterDriver : MonoBehaviour {
 	public float characterSpeed = .1f;
 	public bool playMode = false;
 	public GameObject label;
+	public AudioClip a440;
+	public int burglar_num; // 0 - strong, 1 - stealth, 2 - sexy, 3 - hacker
 	float currentSpeed;
-	int status; //0 - idling, 1 - running, 2 - jumping, 3 - ducking
+	int status; //0 - idling, 1 - running, 2 - jumping, 3 - ducking, -1 - dead
+	int note; //0 - C, 1 - C#, 2 - D, 3 - Eb
+			  //4 - E, 5 - F, 6 - F#, 7 - G
+			  //8 - G#, 9 - A, 10 - Bb, 11 - B
+
+
+	// Strong character should play notes 0,1,2
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +37,10 @@ public class CharacterDriver : MonoBehaviour {
 				label.guiText.text = "I am ducking.";
 				currentSpeed = characterSpeed;
 				break;
+			case -1:
+				label.guiText.text = "I got stuck!";
+				currentSpeed = 0.0f;
+				break;
 			default:
 				label.guiText.text = "I am running.";
 				currentSpeed = characterSpeed;
@@ -42,16 +54,31 @@ public class CharacterDriver : MonoBehaviour {
 		switch(pitch){
 		case("hi"):
 			status = 2;
+			note = 2;
 			break;
 		case("high"):
 			status = 2;
+			note = 2;
 			break;
 		case("low"):
 			status = 3;
+			note = 0;
+			break;
+		case("dead"):
+			status = -1;
 			break;
 		default:
 			status = 1;
+			note = 1;
 			break;
 		}
+
+		if(status > 0){
+			print("play on");
+			audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
+			audio.Play();
+		}
 	}
+
+
 }
