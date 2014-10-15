@@ -6,6 +6,7 @@ public class NoteRowScript : MonoBehaviour {
 	public ArrayList notes;
 	public int noteIndex;
 	public int characterIndex = -1;
+	public int viewLimit = 3;
 
 	//Adding new notes
 	public string newPitch = "Pitch";
@@ -23,6 +24,7 @@ public class NoteRowScript : MonoBehaviour {
 			notes.Add (blocks[i]);
 			Debug.Log(i);
 		}
+		Invoke("uncheckLight", 0);
 	}
 	
 	// Update is called once per frame
@@ -87,7 +89,22 @@ public class NoteRowScript : MonoBehaviour {
 			notes.Add (note);
 
 		}
+		if (GUILayout.Button("See Map")){
+			if(viewLimit > 0){
+				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
+				Light light = gLight.GetComponent<Light>();
+				light.intensity = 0.5f;
+				Invoke("uncheckLight", 3);
+				viewLimit--;
+			}
+		}
 	
 		GUILayout.EndArea ();
+	}
+
+	void uncheckLight(){
+		GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
+		Light light = gLight.GetComponent<Light>();
+		light.intensity = 0.0f;
 	}
 }
