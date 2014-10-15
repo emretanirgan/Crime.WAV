@@ -13,11 +13,38 @@ public class drag : MonoBehaviour {
 	private GameObject copyObject; 
 	//public GameObject targetObj;
 
+	Vector3[] initXPos = new Vector3[16];
+	Vector3[] finalXPos = new Vector3[16];
+	int noteNum = 0; 
 
+	GameObject targetObj;
 	// Use this for initialization
+
 	void Start () {
 		//targetObj.rigidbody.isKinematic = true;
-	
+		targetObj = GameObject.FindGameObjectWithTag("targetPos");
+		Vector3 targetPos = targetObj.transform.position;
+		float xScale = targetObj.transform.localScale.x;
+		float discretization = 14 / 16.0f; 
+
+		//Create array of initial positions
+		for (int i = 0; i < 16; i++)
+
+		{
+			
+		/*	Debug.Log("intial");
+			initXPos[i] = new Vector3(targetPos.x - xScale/2.0f + i*discretization, targetPos.y, 
+			                          targetPos.z);
+			Debug.Log (initXPos[i]);
+			finalXPos[i] = new Vector3(initXPos[i].x + discretization, targetPos.y, 
+			                           targetPos.z);
+		*/
+			initXPos[i] = new Vector3(targetPos.x - 14/2.0f + i*discretization, targetPos.y, 
+			                          targetPos.z);
+			//Debug.Log (initXPos[i]);
+			finalXPos[i] = new Vector3(initXPos[i].x + discretization, targetPos.y, 
+			                           targetPos.z);
+		}
 	}
 	
 	// Update is called once per frame
@@ -65,24 +92,82 @@ public class drag : MonoBehaviour {
 	void OnMouseUp()
 	{
 		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
-		gameObject.transform.position = new Vector3(targetObj.transform.position.x,
-		                                            targetObj.transform.position.y,
-		                                            targetObj.transform.position.z);
+
+		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+
+
+		transform.localScale = new Vector3(1, 1, 1);
+		Debug.Log (noteNum);
+		transform.position = new Vector3(initXPos[noteNum].x,targetObj.transform.position.y, 
+		                                 targetObj.transform.position.z);
+		noteNum += 1;
+		
+
+	/*	GameObject note = (GameObject)Instantiate (Resources.Load ("Note"));
+		NoteScript ns = note.GetComponent<NoteScript>();
+		ns.value = 8/float.Parse(newVal);
+		ns.pitch = newPitch;
+		note.transform.localScale = new Vector3(ns.value, 1, 1);
+		note.transform.position = new Vector3(notePos,0,-10);
+		notePos += ns.value;
+		
+		newVal = "Note Length";
+		newPitch = "Pitch";
+		
+		notes.Add (note);*/
+
+/*		for (int i = 0; i < 16; i++)
+		{
+			//Debug.Log("fina");
+			//Debug.Log (curPosition);
+
+			Vector3 initPosWorld = initXPos[i];
+
+			//Debug.Log(initPosWorld);
+			//	Debug.Log (transform.position.x);
+			if((curPosition.x - initPosWorld.x) < 0.1f)
+			{
+				//CHANGE SCALE DEPENIDNG ON PITCH
+				transform.localScale = new Vector3(1, 1, 1);
+				transform.position = new Vector3(initPosWorld.x, targetObj.transform.position.y, 
+				                                 targetObj.transform.position.z);
+				Debug.Log ("SSDS");
+
+			}
+
+		}*/
+
+
+
+
+	//	note.transform.localScale = new Vector3(ns.value, 1, 1);
+	//	note.transform.position = new Vector3(notePos,0,-10);
+	//	notePos += ns.value;
+
+
+	//	gameObject.transform.position = new Vector3(targetObj.transform.position.x,
+		                                     //       targetObj.transform.position.y,
+		                                      //      targetObj.transform.position.z);
 		gameObject.rigidbody.isKinematic = true;
-		Debug.Log ("COLLISION");
+
 		
 	}
 	
 	void OnMouseDown()
 	{
 		//drag = true;
-
+		//HARDCODED: CHANGE THIS LATER
+		Vector3 positionOfBlockUI = new Vector3 (-9.0f, 0.1f, -4.0f);
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 
 		//initialPos = gameObject.transform.position; 
-		copyObject = Instantiate (gameObject, transform.position, transform.rotation) as GameObject; 
-	
+
+		if (gameObject.transform.position == positionOfBlockUI)
+		{
+			copyObject = Instantiate (gameObject, transform.position, transform.rotation) as GameObject; 
+		}
 	}
 	
 	

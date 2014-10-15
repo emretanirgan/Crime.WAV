@@ -7,6 +7,11 @@ public class NoteRowScript : MonoBehaviour {
 	public int noteIndex;
 	public int characterIndex = -1;
 
+	//Adding new notes
+	public string newPitch = "Pitch";
+	public string newVal = "Note Length";
+	public float notePos = -10;
+
 	// Use this for initialization
 	void Start () {
 		notes = new ArrayList();
@@ -45,9 +50,44 @@ public class NoteRowScript : MonoBehaviour {
 		Debug.Log(ns.value);
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+
+
 		cd.animate (ns.pitch, ns.value);
 		//get character from global script/looking at tags and call action method
 		//character.playAction(b.pitch, b.value);
 		noteIndex++;
+		if (noteIndex == notes.Count){
+			cd.playMode = false;
+		}
+		else{
+			cd.playMode = true;
+		}
+	}
+
+	void OnGUI(){
+		//Hacky position, change later
+		//GUILayout.BeginArea(new Rect(Screen.width / 4, Screen.height / 2 , Screen.width /2, 200));
+		GUILayout.BeginArea(new Rect(50, 500, 200, 200));
+		
+		newVal = GUILayout.TextField (newVal);
+		newPitch = GUILayout.TextField (newPitch);
+		if (GUILayout.Button("Add Note"))
+		{
+			GameObject note = (GameObject)Instantiate (Resources.Load ("Note"));
+			NoteScript ns = note.GetComponent<NoteScript>();
+			ns.value = 8/float.Parse(newVal);
+			ns.pitch = newPitch;
+			note.transform.localScale = new Vector3(ns.value, 1, 1);
+			note.transform.position = new Vector3(notePos,0,-10);
+			notePos += ns.value;
+
+			newVal = "Note Length";
+			newPitch = "Pitch";
+
+			notes.Add (note);
+
+		}
+	
+		GUILayout.EndArea ();
 	}
 }
