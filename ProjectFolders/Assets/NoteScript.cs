@@ -53,25 +53,57 @@ public class NoteScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
+	public bool checkIfThereIsObject(Vector3 targetPosition)
+	{
+		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
+		foreach(GameObject current in placedObjects)
+		{
+			if(current.transform.position == targetPosition)
+				return false;
+		}
+		return true;
+	}
+
+/*	void OnCollisionEnter(Collision collision)
+	{
+		//the Collision contains a lot of info, but it's the colliding 
+		//object we're most interested in. 
+		Collider collider = collision.collider; 
+		
+		if (collider.CompareTag ("targetPos")) {
+			Debug.Log ("COLLISION");
+		}
+		else
+			Destroy (gameObject);
+	}*/
+	
 	void OnMouseUp()
 	{
 		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
 		
-		float gridCubeWidth = 1.0f, gridCubeHeight = 0.25f;
+		float gridCubeWidth = 1.0f, gridCubeHeight = 0.75f;
 
-		float changedPosX = gameObject.transform.position.x + gameObject.transform.localScale.x/2.0f; 
-		Debug.Log (changedPosX); 
-		Debug.Log (gameObject.transform.position.x);
-		Debug.Log (changedPosX);
-		
+		Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+		Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+
 		float posX = Mathf.Round(gameObject.transform.position.x/ gridCubeWidth) * gridCubeWidth ; 
-		float posY = targetObj.transform.position.y;
+		float posY = Mathf.Round (gameObject.transform.position.y/gridCubeHeight) * gridCubeHeight;
+		Vector3 checkPosition = new Vector3 (posX, posY, targetObj.transform.position.z);
+		Debug.Log ("checkposition");
+		Debug.Log (checkPosition);
 
-		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
-
+		if (checkIfThereIsObject(checkPosition))
+		{
+			Debug.Log ("objectPos");
+		   	gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
+			Debug.Log (gameObject.transform.position);
+			gameObject.rigidbody.isKinematic = true; 
+		}
+		else
+			Destroy (gameObject);
 
 
 	}
