@@ -61,18 +61,18 @@ public class NoteScript : MonoBehaviour {
 		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
 		
 		float gridCubeWidth = 1.0f, gridCubeHeight = 0.75f;
-
+		
 		Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-
+		
 		float posX = Mathf.Round(gameObject.transform.position.x/ gridCubeWidth) * gridCubeWidth ; 
 		float posY = Mathf.Round (gameObject.transform.position.y/gridCubeHeight) * gridCubeHeight;
-
-
+		
+		
 		//Check there is no object in position. If there is destroy 
 		Vector3 checkPosition = new Vector3 (posX, posY, targetObj.transform.position.z);
 		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
-
+		
 		foreach(GameObject current in placedObjects)
 		{
 			if(current.transform.position.x == checkPosition.x && current.transform.position.y == checkPosition.y)
@@ -80,11 +80,11 @@ public class NoteScript : MonoBehaviour {
 				Destroy (gameObject);
 			}
 		}
-
+		
 		if (!targetObj.collider.bounds.Contains(checkPosition)) {
 			Destroy (gameObject);
 		}
-
+		
 		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
 			/*	Debug.Log ("checkposition");
 		Debug.Log (checkPosition);
