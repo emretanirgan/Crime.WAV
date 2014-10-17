@@ -56,30 +56,6 @@ public class NoteScript : MonoBehaviour {
 
 	}
 
-	public bool checkIfThereIsObject(Vector3 targetPosition)
-	{
-		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
-		foreach(GameObject current in placedObjects)
-		{
-			if(current.transform.position == targetPosition)
-				return false;
-		}
-		return true;
-	}
-
-/*	void OnCollisionEnter(Collision collision)
-	{
-		//the Collision contains a lot of info, but it's the colliding 
-		//object we're most interested in. 
-		Collider collider = collision.collider; 
-		
-		if (collider.CompareTag ("targetPos")) {
-			Debug.Log ("COLLISION");
-		}
-		else
-			Destroy (gameObject);
-	}*/
-	
 	void OnMouseUp()
 	{
 		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
@@ -91,19 +67,42 @@ public class NoteScript : MonoBehaviour {
 
 		float posX = Mathf.Round(gameObject.transform.position.x/ gridCubeWidth) * gridCubeWidth ; 
 		float posY = Mathf.Round (gameObject.transform.position.y/gridCubeHeight) * gridCubeHeight;
+
+
+		//Check there is no object in position. If there is destroy 
 		Vector3 checkPosition = new Vector3 (posX, posY, targetObj.transform.position.z);
-		Debug.Log ("checkposition");
+		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
+
+		foreach(GameObject current in placedObjects)
+		{
+			if(current.transform.position.x == checkPosition.x && current.transform.position.y == checkPosition.y)
+			{	
+				Destroy (gameObject);
+			}
+		}
+
+		if (!targetObj.collider.bounds.Contains(checkPosition)) {
+			Destroy (gameObject);
+		}
+
+		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
+			/*	Debug.Log ("checkposition");
 		Debug.Log (checkPosition);
 
 		if (checkIfThereIsObject(checkPosition))
 		{
 			Debug.Log ("objectPos");
-		   	gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
+			gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
 			Debug.Log (gameObject.transform.position);
-			gameObject.rigidbody.isKinematic = true; 
+			gameObject.rigidbody.isKinematic = true;
 		}
 		else
+		{
 			Destroy (gameObject);
+			Debug.Log ("destroy");
+
+		}
+*/
 
 
 	}
