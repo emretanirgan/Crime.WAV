@@ -7,6 +7,8 @@ public class NoteRowScript : MonoBehaviour {
 	public int noteIndex;
 	public int characterIndex = -1;
 	public int viewLimit = 3;
+	//If space is pressed, the character also moves with the music
+	public bool moveChar = false;
 
 	//Adding new notes
 	public string newPitch = "Pitch";
@@ -25,45 +27,55 @@ public class NoteRowScript : MonoBehaviour {
 			Debug.Log(i);
 		}
 		Invoke("uncheckLight", 0);
+		//Loop the music
+		InvokeRepeating("playNotes", 0, 4);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown ("space")){
-			playNotes ();
+			//Move the character with the notes
+			moveChar = true;
 		}
 	}
 
 	void playNotes() {
+		//Play one iteration of the current notes
 		float noteDelay = 0;
 		noteIndex=0;
 		for(int i=0; i<notes.Count; i++){
 			GameObject go = (GameObject)notes[i];
 			NoteScript ns = go.GetComponent<NoteScript>();
 			Invoke ("triggerAction", noteDelay);
-			noteDelay += ns.value;
+			noteDelay += 4/ns.value;
 		}
+		//Added this line so that we don't need an end note any more
+		Invoke("triggerAction", noteDelay);
 	}
 
 	void triggerAction() {
-		GameObject go = (GameObject)notes[noteIndex];
-		NoteScript ns = go.GetComponent<NoteScript>();
-		Debug.Log(ns.pitch);
-		Debug.Log(ns.value);
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 
-
-		cd.animate (ns.pitch, ns.value);
-		//get character from global script/looking at tags and call action method
-		//character.playAction(b.pitch, b.value);
-		noteIndex++;
 		if (noteIndex == notes.Count){
+			cd.animate("dead", 8);
 			cd.playMode = false;
+			moveChar = false;
 		}
 		else{
-			cd.playMode = true;
+			GameObject go = (GameObject)notes[noteIndex];
+			NoteScript ns = go.GetComponent<NoteScript>();
+			cd.animate (ns.pitch, ns.value);
+			//If space is pressed, translate character as well
+			if(moveChar == true){
+				cd.playMode = true;
+			}
 		}
+		//Debug.Log(ns.pitch);
+		//Debug.Log(ns.value);
+		//Debug.Log(noteIndex);
+	
+		noteIndex++;
 	}
 
 	void OnGUI(){
@@ -77,7 +89,7 @@ public class NoteRowScript : MonoBehaviour {
 		{
 			GameObject note = (GameObject)Instantiate (Resources.Load ("Note"));
 			NoteScript ns = note.GetComponent<NoteScript>();
-			ns.value = 8/float.Parse(newVal);
+			ns.value = float.Parse (newVal);
 			ns.pitch = newPitch;
 			note.transform.localScale = new Vector3(ns.value, 1, 1);
 			note.transform.position = new Vector3(notePos,0,-10);
