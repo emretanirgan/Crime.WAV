@@ -13,6 +13,11 @@ public class CharacterDriver : MonoBehaviour {
 			  //4 - E, 5 - F, 6 - F#, 7 - G
 			  //8 - G#, 9 - A, 10 - Bb, 11 - B
 
+	public Texture idleTex;
+	public Texture runTex;
+	public Texture jumpTex;
+	public Texture duckTex;
+
 
 	// Strong character should play notes 0,1,2
 
@@ -55,21 +60,26 @@ public class CharacterDriver : MonoBehaviour {
 		case("hi"):
 			status = 2;
 			note = 2;
+			renderer.material.mainTexture = jumpTex;
 			break;
 		case("high"):
 			status = 2;
 			note = 2;
+			renderer.material.mainTexture = jumpTex;
 			break;
 		case("low"):
 			status = 3;
 			note = 0;
+			renderer.material.mainTexture = duckTex;
 			break;
 		case("dead"):
 			status = -1;
+			renderer.material.mainTexture = idleTex;
 			break;
 		default:
 			status = 1;
 			note = 1;
+			renderer.material.mainTexture = runTex;
 			break;
 		}
 
