@@ -34,21 +34,6 @@ public class NoteScript : MonoBehaviour {
 		else if (pitch == "low"){
 			gameObject.renderer.material.color = Color.blue;
 		}
-
-
-/*		notes = new ArrayList();
-
-		noteIndex = 0;
-		
-		//Remove once block placing UI is implemented
-		GameObject[] blocks = GameObject.FindGameObjectsWithTag("Note");
-		for(int i=0; i<blocks.Length; i++){
-			notes.Add (blocks[i]);
-			//Debug.Log ("notes");
-			//Debug.Log(i);
-		}
-
-*/
 	}
 	
 	// Update is called once per frame
@@ -85,42 +70,37 @@ public class NoteScript : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		
-		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
-			/*	Debug.Log ("checkposition");
-		Debug.Log (checkPosition);
-
-		if (checkIfThereIsObject(checkPosition))
-		{
-			Debug.Log ("objectPos");
-			gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z); 
-			Debug.Log (gameObject.transform.position);
-			gameObject.rigidbody.isKinematic = true;
-		}
-		else
-		{
-			Destroy (gameObject);
-			Debug.Log ("destroy");
-
-		}
-*/
+		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z);
+		if(gameObject.transform.localScale.x == 1.0f)
+			value = 16;
+		else if(gameObject.transform.localScale.x == 2.0f)
+			value = 8;
+		else if(gameObject.transform.localScale.x == 4.0f)
+			value = 4;
+		if (posY == 0.75f)
+			pitch = "high";
+		else if(posY == 0)
+			pitch = "mid";
+		else if (posY == -0.75f)
+			pitch = "low";
+		gameObject.tag = "placedNote";
 
 
 	}
 	void OnMouseDown()
 	{
 		//HARDCODED
-		Vector3 positionOfBlockUI = new Vector3 (-11.5f, 0.1f, -4.0f);
-		Vector3 positionOfBlockUI2 = new Vector3 (-11.5f, 1.3f, -4.0f);
-		Vector3 positionOfBlockUI3 = new Vector3 (-13.5f, 2.6f, -4.0f);
-		Vector3 positionOfBlockUI4 = new Vector3 (-14.5f, 3.9f, -4.0f);
+		Vector3 positionOfBlockUI = new Vector3 (-9.5f, 2.0f, -4.0f);
+		Vector3 positionOfBlockUI2 = new Vector3 (-8.0f, 2.0f, -4.0f);
+		Vector3 positionOfBlockUI3 = new Vector3 (-5.5f, 2.0f, -4.0f);
+
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 		
 
 		if ((gameObject.transform.position == positionOfBlockUI) || (gameObject.transform.position == positionOfBlockUI2)
-		    || gameObject.transform.position == positionOfBlockUI3 || gameObject.transform.position == positionOfBlockUI4)
+		    || gameObject.transform.position == positionOfBlockUI3)
 		{
-			//GameObject note = (GameObject)Instantiate (Resources.Load ("Note"));
 			copyObject = Instantiate (gameObject, transform.position, transform.rotation) as GameObject; 
 		}
 	}

@@ -84,13 +84,13 @@ public class CharacterDriver : MonoBehaviour {
 		}
 
 		if(status > 0){
-			Debug.Log(AudioSettings.dspTime);
+//			Debug.Log(AudioSettings.dspTime);
 			playAudio(note, value);
 		}
 	}
 
 	public void playAudio(int note, float value){
-		print("play on");
+//		print("play on");
 		audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
 		audio.Play();
 		double t0 = AudioSettings.dspTime;

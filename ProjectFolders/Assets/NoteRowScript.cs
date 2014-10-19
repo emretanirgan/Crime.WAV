@@ -21,11 +21,11 @@ public class NoteRowScript : MonoBehaviour {
 		noteIndex = 0;
 
 		//Remove once block placing UI is implemented
-		GameObject[] blocks = GameObject.FindGameObjectsWithTag("Note");
+		/*GameObject[] blocks = GameObject.FindGameObjectsWithTag("Note");
 		for(int i=0; i<blocks.Length; i++){
 			notes.Add (blocks[i]);
-			Debug.Log(i);
-		}
+			Debug.Log(blocks[i]);
+		}*/
 		Invoke("uncheckLight", 0);
 		//Loop the music
 		InvokeRepeating("playNotes", 0, 4);
@@ -43,9 +43,10 @@ public class NoteRowScript : MonoBehaviour {
 		//Play one iteration of the current notes
 		float noteDelay = 0;
 		noteIndex=0;
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
 		for(int i=0; i<notes.Count; i++){
-			GameObject go = (GameObject)notes[i];
-			NoteScript ns = go.GetComponent<NoteScript>();
+			//GameObject go = (GameObject)notes[i];
+			NoteScript ns = go[i].GetComponent<NoteScript>();
 			Invoke ("triggerAction", noteDelay);
 			noteDelay += 4/ns.value;
 		}
@@ -56,6 +57,7 @@ public class NoteRowScript : MonoBehaviour {
 	void triggerAction() {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
 
 		if (noteIndex == notes.Count){
 			cd.animate("dead", 8);
@@ -63,8 +65,9 @@ public class NoteRowScript : MonoBehaviour {
 			moveChar = false;
 		}
 		else{
-			GameObject go = (GameObject)notes[noteIndex];
-			NoteScript ns = go.GetComponent<NoteScript>();
+
+			//GameObject go = (GameObject)notes[noteIndex];
+			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
 			//If space is pressed, translate character as well
 			if(moveChar == true){
@@ -82,6 +85,20 @@ public class NoteRowScript : MonoBehaviour {
 		//Hacky position, change later
 		//GUILayout.BeginArea(new Rect(Screen.width / 4, Screen.height / 2 , Screen.width /2, 200));
 		GUILayout.BeginArea(new Rect(50, 500, 200, 200));
+
+		if (GUILayout.Button("Play"))
+		{
+			GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
+			for(int i=0; i<blocks.Length; i++)
+			{
+				NoteScript note = blocks[i].GetComponent<NoteScript>();
+				notes.Add (note);
+				Debug.Log(note.pitch);
+			}
+			moveChar = true;
+
+		}
+	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		
 		newVal = GUILayout.TextField (newVal);
 		newPitch = GUILayout.TextField (newPitch);
@@ -100,7 +117,7 @@ public class NoteRowScript : MonoBehaviour {
 
 			notes.Add (note);
 
-		}
+		}*/
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
 				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
