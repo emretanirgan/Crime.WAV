@@ -69,7 +69,7 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
-			//Debug.Log(go[noteIndex].transform.localScale);
+			Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
 			if(moveChar == true){
 				cd.playMode = true;
