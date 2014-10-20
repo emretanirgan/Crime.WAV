@@ -93,7 +93,7 @@ public class NoteRowScript : MonoBehaviour {
 			{
 				NoteScript note = blocks[i].GetComponent<NoteScript>();
 				notes.Add (note);
-				Debug.Log(note.pitch);
+				//Debug.Log(note.pitch);
 			}
 			moveChar = true;
 

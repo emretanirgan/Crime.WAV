@@ -23,7 +23,7 @@ public class CharacterDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print("started");
+//		print("started");
 		currentSpeed = 0;
 		playMode = false;
 		status = 0;
