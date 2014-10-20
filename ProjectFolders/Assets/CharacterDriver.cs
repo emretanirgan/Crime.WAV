@@ -37,14 +37,14 @@ public class CharacterDriver : MonoBehaviour {
 			switch(status){
 			case 2:
 				label.guiText.text = "I am jumping.";
-				currentSpeed = -1/100.0f; //characterSpeed;
 				renderer.material.mainTexture = jumpTex;
+				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);
 				break;
 			case 3:
 				label.guiText.text = "I am ducking.";
-				currentSpeed = -1/100.0f;//characterSpeed;
 				renderer.material.mainTexture = duckTex;
+				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);
 				break;
 			case -1:
@@ -54,8 +54,8 @@ public class CharacterDriver : MonoBehaviour {
 				break;
 			default:
 				label.guiText.text = "I am running.";
-				currentSpeed = -1/100.0f; //characterSpeed;
 				renderer.material.mainTexture = runTex;
+				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);
 				break;
 			}
