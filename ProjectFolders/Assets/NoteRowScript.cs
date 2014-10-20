@@ -35,7 +35,7 @@ public class NoteRowScript : MonoBehaviour {
 	void Update () {
 
 		//Reorder based on x position 
-		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		for ( int m = 0; m < blocks.Length; ++m)
 		{
@@ -53,7 +53,7 @@ public class NoteRowScript : MonoBehaviour {
 		//Play one iteration of the current notes
 		float noteDelay = 0;
 		noteIndex=0;
-		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 		for(int i=0; i<go.Length; i++){
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
@@ -67,7 +67,7 @@ public class NoteRowScript : MonoBehaviour {
 	void triggerAction() {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
-		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		for(int i=0; i<go.Length; i++)
 		{

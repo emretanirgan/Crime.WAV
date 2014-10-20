@@ -3,6 +3,7 @@ using System.Collections;
 
 public class NoteScript : MonoBehaviour {
 
+	public GameObject targetBurglar; 
 	public float value;
 	public string pitch;
 	int number;
@@ -16,8 +17,6 @@ public class NoteScript : MonoBehaviour {
 	private Vector3 offset;
 	
 	private GameObject copyObject; 
-	Vector3[] initXPos = new Vector3[16];
-	Vector3[] finalXPos = new Vector3[16];
 	Vector3 notePos = new Vector3 (-9.0f, 0.1f, -4.0f);
 	
 
@@ -43,7 +42,10 @@ public class NoteScript : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
+		GameObject targetObj0 = GameObject.FindGameObjectWithTag("targetPos0");
+		GameObject targetObj1 = GameObject.FindGameObjectWithTag("targetPos1");
+		GameObject targetObj2 = GameObject.FindGameObjectWithTag("targetPos2");
+		GameObject targetObj3 = GameObject.FindGameObjectWithTag("targetPos3");
 		
 		float gridCubeWidth = 1.0f, gridCubeHeight = 0.75f;
 		
@@ -55,7 +57,8 @@ public class NoteScript : MonoBehaviour {
 		
 		
 		//Check there is no object in position. If there is destroy 
-		Vector3 checkPosition = new Vector3 (posX, posY, targetObj.transform.position.z);
+		Vector3 checkPosition = new Vector3 (posX, posY, targetObj0.transform.position.z);
+		//Debug.Log (checkPosition);
 		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
 		
 		foreach(GameObject current in placedObjects)
@@ -66,7 +69,8 @@ public class NoteScript : MonoBehaviour {
 			}
 		}
 		
-		if (!targetObj.collider.bounds.Contains(checkPosition)) {
+		if (!targetObj0.collider.bounds.Contains(checkPosition) && !targetObj1.collider.bounds.Contains(checkPosition)
+		    && !targetObj2.collider.bounds.Contains(checkPosition) && !targetObj3.collider.bounds.Contains(checkPosition)) {
 			Destroy (gameObject);
 		}
 		
@@ -83,8 +87,16 @@ public class NoteScript : MonoBehaviour {
 			pitch = "mid";
 		else if (posY == -0.75f)
 			pitch = "low";
-		gameObject.tag = "placedNote";
-		//Debug.Log (pitch);
+
+		if (targetObj0.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote0";
+		else if (targetObj1.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote1";
+		else if (targetObj2.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote2";
+		else if (targetObj3.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote3";
+		//Debug.Log (gameObject.tag);
 
 	}
 	void OnMouseDown()
