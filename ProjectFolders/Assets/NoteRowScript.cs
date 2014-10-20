@@ -102,6 +102,9 @@ public class NoteRowScript : MonoBehaviour {
 			if(moveChar == true){
 				cd.playMode = true;
 			}
+			/*Debug.Log(ns.pitch);
+			Debug.Log(ns.value);
+			Debug.Log(noteIndex);*/
 			noteIndex++;
 		}
 		//Debug.Log(ns.pitch);
