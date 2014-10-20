@@ -38,12 +38,12 @@ public class CharacterDriver : MonoBehaviour {
 			case 2:
 				label.guiText.text = "I am jumping.";
 				currentSpeed = -1/100.0f; //characterSpeed;
-				Debug.Log(currentSpeed);
+				//Debug.Log(currentSpeed);
 				break;
 			case 3:
 				label.guiText.text = "I am ducking.";
 				currentSpeed = -1/100.0f;//characterSpeed;
-				Debug.Log(currentSpeed);
+				//Debug.Log(currentSpeed);
 				break;
 			case -1:
 				label.guiText.text = "I got stuck!";
@@ -52,7 +52,7 @@ public class CharacterDriver : MonoBehaviour {
 			default:
 				label.guiText.text = "I am running.";
 				currentSpeed = -1/100.0f; //characterSpeed;
-				Debug.Log(currentSpeed);
+				//Debug.Log(currentSpeed);
 				break;
 			}
 			gameObject.transform.Translate(new Vector3(currentSpeed,0.0f,0.0f));

@@ -33,10 +33,34 @@ public class NoteRowScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown ("space")){
-			//Move the character with the notes
-			moveChar = true;
+
+		//Reorder based on x position 
+		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
+		for(int i=0; i<blocks.Length; i++)
+		{
+			//NoteScript note = blocks[i].GetComponent<NoteScript>();
+			for (int j = i + 1; j < blocks.Length ; ++j)
+			{
+				if(blocks[j].transform.position.x < blocks[i].transform.position.x)
+				{
+					GameObject temp = blocks[i]; 
+					blocks[i] = blocks[j]; 
+					blocks[j] = temp; 
+				}
+			}
+
+			//Debug.Log(note.pitch);
 		}
+
+
+		for ( int m = 0; m < blocks.Length; ++m)
+		{
+			NoteScript note = blocks[m].GetComponent<NoteScript>();
+			notes.Add (note);
+		}
+
+
+
 	}
 
 	void playNotes() {
@@ -44,12 +68,11 @@ public class NoteRowScript : MonoBehaviour {
 		float noteDelay = 0;
 		noteIndex=0;
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
-		for(int i=0; i<notes.Count; i++){
+		for(int i=0; i<go.Length; i++){
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
 			Invoke ("triggerAction", noteDelay);
 			noteDelay += 4/ns.value;
-			//Debug.Log(ns.value);
 		}
 		//Added this line so that we don't need an end note any more
 		Invoke("triggerAction", noteDelay);
@@ -70,7 +93,7 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
-			//Debug.Log(go[noteIndex].transform.localScale);
+			Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
 			if(moveChar == true){
 				cd.playMode = true;
@@ -93,13 +116,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
-			GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
-			for(int i=0; i<blocks.Length; i++)
-			{
-				NoteScript note = blocks[i].GetComponent<NoteScript>();
-				notes.Add (note);
-				//Debug.Log(note.pitch);
-			}
+
 			moveChar = true;
 
 		}
