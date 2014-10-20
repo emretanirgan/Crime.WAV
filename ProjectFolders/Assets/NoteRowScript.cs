@@ -36,28 +36,13 @@ public class NoteRowScript : MonoBehaviour {
 
 		//Reorder based on x position 
 		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
-		for(int i=0; i<blocks.Length; i++)
-		{
-			//NoteScript note = blocks[i].GetComponent<NoteScript>();
-			for (int j = i + 1; j < blocks.Length ; ++j)
-			{
-				if(blocks[j].transform.position.x < blocks[i].transform.position.x)
-				{
-					GameObject temp = blocks[i]; 
-					blocks[i] = blocks[j]; 
-					blocks[j] = temp; 
-				}
-			}
 
-			//Debug.Log(note.pitch);
-		}
-
-		notes.Clear();
 		for ( int m = 0; m < blocks.Length; ++m)
 		{
-			Debug.Log(blocks[m].transform.position.x);
+			//Debug.Log(blocks[m].transform.position.x);
 			NoteScript note = blocks[m].GetComponent<NoteScript>();
-			notes.Add (note);
+			notes.Insert(m, note);
+			Debug.Log(notes[m]);
 		}
 
 
@@ -83,6 +68,24 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
+
+		for(int i=0; i<go.Length; i++)
+		{
+			//NoteScript note = blocks[i].GetComponent<NoteScript>();
+			for (int j = i + 1; j < go.Length ; ++j)
+			{
+				if(go[j].transform.position.x < go[i].transform.position.x)
+				{
+					GameObject temp = go[i]; 
+					go[i] = go[j]; 
+					go[j] = temp; 
+				}
+			}
+			
+			//Debug.Log(note.pitch);
+		}
+
+
 		//Debug.Log (go.Length); 
 		if (noteIndex == go.Length){
 			cd.animate("dead", 8);
