@@ -52,9 +52,10 @@ public class NoteRowScript : MonoBehaviour {
 			//Debug.Log(note.pitch);
 		}
 
-
+		notes.Clear();
 		for ( int m = 0; m < blocks.Length; ++m)
 		{
+			Debug.Log(blocks[m].transform.position.x);
 			NoteScript note = blocks[m].GetComponent<NoteScript>();
 			notes.Add (note);
 		}
@@ -82,8 +83,8 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
-
-		if (noteIndex == notes.Count){
+		//Debug.Log (go.Length); 
+		if (noteIndex == go.Length){
 			cd.animate("dead", 8);
 			cd.playMode = false;
 			moveChar = false;
@@ -93,7 +94,7 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
-			Debug.Log(ns.pitch);
+			//Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
 			if(moveChar == true){
 				cd.playMode = true;
@@ -101,12 +102,13 @@ public class NoteRowScript : MonoBehaviour {
 			/*Debug.Log(ns.pitch);
 			Debug.Log(ns.value);
 			Debug.Log(noteIndex);*/
+			noteIndex++;
 		}
 		//Debug.Log(ns.pitch);
 		//Debug.Log(ns.value);
 		//Debug.Log(noteIndex);
 	
-		noteIndex++;
+
 	}
 
 	void OnGUI(){
@@ -116,7 +118,6 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
-
 			moveChar = true;
 
 		}

@@ -38,20 +38,24 @@ public class CharacterDriver : MonoBehaviour {
 			case 2:
 				label.guiText.text = "I am jumping.";
 				currentSpeed = -1/100.0f; //characterSpeed;
+				renderer.material.mainTexture = jumpTex;
 				//Debug.Log(currentSpeed);
 				break;
 			case 3:
 				label.guiText.text = "I am ducking.";
 				currentSpeed = -1/100.0f;//characterSpeed;
+				renderer.material.mainTexture = duckTex;
 				//Debug.Log(currentSpeed);
 				break;
 			case -1:
 				label.guiText.text = "I got stuck!";
 				currentSpeed = 0.0f;
+				renderer.material.mainTexture = idleTex;
 				break;
 			default:
 				label.guiText.text = "I am running.";
 				currentSpeed = -1/100.0f; //characterSpeed;
+				renderer.material.mainTexture = runTex;
 				//Debug.Log(currentSpeed);
 				break;
 			}
@@ -64,26 +68,25 @@ public class CharacterDriver : MonoBehaviour {
 		case("hi"):
 			status = 2;
 			note = 2;
-			renderer.material.mainTexture = jumpTex;
+
 			break;
 		case("high"):
 			status = 2;
 			note = 2;
-			renderer.material.mainTexture = jumpTex;
 			break;
 		case("low"):
 			status = 3;
 			note = 0;
-			renderer.material.mainTexture = duckTex;
+
 			break;
 		case("dead"):
 			status = -1;
-			renderer.material.mainTexture = idleTex;
+			//renderer.material.mainTexture = idleTex;
 			break;
 		default:
 			status = 1;
 			note = 1;
-			renderer.material.mainTexture = runTex;
+			//renderer.material.mainTexture = runTex;
 			break;
 		}
 		time = value;
