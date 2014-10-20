@@ -72,11 +72,11 @@ public class NoteScript : MonoBehaviour {
 		
 		gameObject.transform.position = new Vector3 (posX, posY, gameObject.transform.position.z);
 		if(gameObject.transform.localScale.x == 1.0f)
-			value = 4;
+			value = 16;
 		else if(gameObject.transform.localScale.x == 2.0f)
 			value = 8;
 		else if(gameObject.transform.localScale.x == 4.0f)
-			value = 16;
+			value = 4;
 		if (posY == 0.75f)
 			pitch = "high";
 		else if(posY == 0)
