@@ -17,6 +17,7 @@ public class CharacterDriver : MonoBehaviour {
 	public Texture runTex;
 	public Texture jumpTex;
 	public Texture duckTex;
+	float time; 
 
 
 	// Strong character should play notes 0,1,2
@@ -36,11 +37,13 @@ public class CharacterDriver : MonoBehaviour {
 			switch(status){
 			case 2:
 				label.guiText.text = "I am jumping.";
-				currentSpeed = characterSpeed;
+				currentSpeed = -1/100.0f; //characterSpeed;
+				Debug.Log(currentSpeed);
 				break;
 			case 3:
 				label.guiText.text = "I am ducking.";
-				currentSpeed = characterSpeed;
+				currentSpeed = -1/100.0f;//characterSpeed;
+				Debug.Log(currentSpeed);
 				break;
 			case -1:
 				label.guiText.text = "I got stuck!";
@@ -48,7 +51,8 @@ public class CharacterDriver : MonoBehaviour {
 				break;
 			default:
 				label.guiText.text = "I am running.";
-				currentSpeed = characterSpeed;
+				currentSpeed = -1/100.0f; //characterSpeed;
+				Debug.Log(currentSpeed);
 				break;
 			}
 			gameObject.transform.Translate(new Vector3(currentSpeed,0.0f,0.0f));
@@ -82,7 +86,7 @@ public class CharacterDriver : MonoBehaviour {
 			renderer.material.mainTexture = runTex;
 			break;
 		}
-
+		time = value;
 		if(status > 0){
 //			Debug.Log(AudioSettings.dspTime);
 			playAudio(note, value);
@@ -94,7 +98,7 @@ public class CharacterDriver : MonoBehaviour {
 		audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
 		audio.Play();
 		double t0 = AudioSettings.dspTime;
-		audio.SetScheduledEndTime(t0+(4.0f/value));
+		audio.SetScheduledEndTime(t0+(16.0f/value));
 	}
 
 

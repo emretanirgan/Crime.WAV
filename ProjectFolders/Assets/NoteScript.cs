@@ -84,7 +84,7 @@ public class NoteScript : MonoBehaviour {
 		else if (posY == -0.75f)
 			pitch = "low";
 		gameObject.tag = "placedNote";
-
+		//Debug.Log (pitch);
 
 	}
 	void OnMouseDown()

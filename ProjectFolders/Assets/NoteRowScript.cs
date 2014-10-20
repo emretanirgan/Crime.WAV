@@ -48,7 +48,7 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
 			Invoke ("triggerAction", noteDelay);
-			noteDelay += 4/ns.value;
+			noteDelay += 16/ns.value;
 		}
 		//Added this line so that we don't need an end note any more
 		Invoke("triggerAction", noteDelay);
@@ -69,6 +69,7 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
+			//Debug.Log(go[noteIndex].transform.localScale);
 			//If space is pressed, translate character as well
 			if(moveChar == true){
 				cd.playMode = true;
