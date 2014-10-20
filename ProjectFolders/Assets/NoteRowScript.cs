@@ -48,7 +48,8 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
 			Invoke ("triggerAction", noteDelay);
-			noteDelay += 16/ns.value;
+			noteDelay += 4/ns.value;
+			//Debug.Log(ns.value);
 		}
 		//Added this line so that we don't need an end note any more
 		Invoke("triggerAction", noteDelay);
@@ -74,6 +75,9 @@ public class NoteRowScript : MonoBehaviour {
 			if(moveChar == true){
 				cd.playMode = true;
 			}
+			/*Debug.Log(ns.pitch);
+			Debug.Log(ns.value);
+			Debug.Log(noteIndex);*/
 		}
 		//Debug.Log(ns.pitch);
 		//Debug.Log(ns.value);

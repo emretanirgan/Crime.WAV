@@ -98,7 +98,7 @@ public class CharacterDriver : MonoBehaviour {
 		audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
 		audio.Play();
 		double t0 = AudioSettings.dspTime;
-		audio.SetScheduledEndTime(t0+(16.0f/value));
+		audio.SetScheduledEndTime(t0+(4.0f/value));
 	}
 
 
