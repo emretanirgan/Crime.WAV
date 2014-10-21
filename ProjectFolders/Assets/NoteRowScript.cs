@@ -17,7 +17,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		Invoke("uncheckLight", 0);
 		//Loop the music
-		InvokeRepeating("playNotes", 0, 4);
+		InvokeRepeating("playNotes", 0, 8);
 	}
 	
 	// Update is called once per frame
