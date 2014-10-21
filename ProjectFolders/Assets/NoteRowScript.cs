@@ -9,6 +9,7 @@ public class NoteRowScript : MonoBehaviour {
 	public int viewLimit = 3;
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
+	public GameObject targetChar; 
 
 	// Use this for initialization
 	void Start () {
@@ -51,8 +52,8 @@ public class NoteRowScript : MonoBehaviour {
 	}
 
 	void triggerAction() {
-		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
-		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+		//GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
+		CharacterDriver cd = targetChar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		for(int i=0; i<go.Length; i++)
@@ -107,6 +108,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
+			//CharacterDriver t = targetChar.GetComponent<CharacterDriver>();
 			moveChar = true;
 		}
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
