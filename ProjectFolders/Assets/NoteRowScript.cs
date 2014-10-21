@@ -10,22 +10,11 @@ public class NoteRowScript : MonoBehaviour {
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
 
-	//Adding new notes
-	public string newPitch = "Pitch";
-	public string newVal = "Note Length";
-	public float notePos = -10;
-
 	// Use this for initialization
 	void Start () {
 		notes = new ArrayList();
 		noteIndex = 0;
 
-		//Remove once block placing UI is implemented
-		/*GameObject[] blocks = GameObject.FindGameObjectsWithTag("Note");
-		for(int i=0; i<blocks.Length; i++){
-			notes.Add (blocks[i]);
-			Debug.Log(blocks[i]);
-		}*/
 		Invoke("uncheckLight", 0);
 		//Loop the music
 		InvokeRepeating("playNotes", 0, 4);
@@ -42,10 +31,7 @@ public class NoteRowScript : MonoBehaviour {
 			//Debug.Log(blocks[m].transform.position.x);
 			NoteScript note = blocks[m].GetComponent<NoteScript>();
 			notes.Insert(m, note);
-			Debug.Log(notes[m]);
 		}
-
-
 
 	}
 
@@ -122,7 +108,6 @@ public class NoteRowScript : MonoBehaviour {
 		if (GUILayout.Button("Play"))
 		{
 			moveChar = true;
-
 		}
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		
