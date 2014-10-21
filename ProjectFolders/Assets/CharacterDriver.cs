@@ -17,7 +17,6 @@ public class CharacterDriver : MonoBehaviour {
 	public Texture runTex;
 	public Texture jumpTex;
 	public Texture duckTex;
-	float time; 
 
 
 	// Strong character should play notes 0,1,2
@@ -59,6 +58,7 @@ public class CharacterDriver : MonoBehaviour {
 				//Debug.Log(currentSpeed);
 				break;
 			}
+
 			gameObject.transform.Translate(new Vector3(currentSpeed,0.0f,0.0f));
 		}
 	}
@@ -68,7 +68,6 @@ public class CharacterDriver : MonoBehaviour {
 		case("hi"):
 			status = 2;
 			note = 2;
-
 			break;
 		case("high"):
 			status = 2;
@@ -89,7 +88,6 @@ public class CharacterDriver : MonoBehaviour {
 			//renderer.material.mainTexture = runTex;
 			break;
 		}
-		time = value;
 		if(status > 0){
 //			Debug.Log(AudioSettings.dspTime);
 			playAudio(note, value);
