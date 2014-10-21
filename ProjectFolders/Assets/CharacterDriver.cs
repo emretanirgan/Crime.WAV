@@ -67,16 +67,15 @@ public class CharacterDriver : MonoBehaviour {
 		switch(pitch){
 		case("hi"):
 			status = 2;
-			note = 2;
+			note = 2 + burglar_num*3;
 			break;
 		case("high"):
 			status = 2;
-			note = 2;
+			note = 2 + burglar_num*3;
 			break;
 		case("low"):
 			status = 3;
-			note = 0;
-
+			note = 0 + burglar_num*3;
 			break;
 		case("dead"):
 			status = -1;
@@ -84,7 +83,7 @@ public class CharacterDriver : MonoBehaviour {
 			break;
 		default:
 			status = 1;
-			note = 1;
+			note = 1 + burglar_num*3;
 			//renderer.material.mainTexture = runTex;
 			break;
 		}

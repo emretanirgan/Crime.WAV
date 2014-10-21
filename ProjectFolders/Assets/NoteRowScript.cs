@@ -15,10 +15,10 @@ public class NoteRowScript : MonoBehaviour {
 	void Start () {
 		notes = new ArrayList();
 		noteIndex = 0;
-
 		Invoke("uncheckLight", 0);
 		//Loop the music
 		InvokeRepeating("playNotes", 0, 8);
+
 	}
 	
 	// Update is called once per frame
@@ -86,9 +86,17 @@ public class NoteRowScript : MonoBehaviour {
 			cd.animate (ns.pitch, ns.value);
 			//Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
-		//	if(moveChar == true){
-		//		cd.playMode = true;
-		//	}
+
+			if(moveChar == true){
+				for (int i = 0; i< 4; ++i)
+				{
+					GameObject b = GameObject.FindGameObjectWithTag("Character"+i.ToString());
+					CharacterDriver c = b.GetComponent<CharacterDriver>();
+					c.playMode = true;
+				}
+				//cd.playMode = true;
+				Debug.Log(characterIndex);
+			}
 			/*Debug.Log(ns.pitch);
 			Debug.Log(ns.value);
 			Debug.Log(noteIndex);*/
@@ -97,8 +105,6 @@ public class NoteRowScript : MonoBehaviour {
 		//Debug.Log(ns.pitch);
 		//Debug.Log(ns.value);
 		//Debug.Log(noteIndex);
-	
-
 	}
 
 	void OnGUI(){
@@ -108,12 +114,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
-			for (int i = 0; i < 4; ++i)
-			{
-				GameObject bu = GameObject.FindGameObjectWithTag("Character"+i.ToString());
-				CharacterDriver t = bu.GetComponent<CharacterDriver>();
-				t.playMode = true;
-			}
+			moveChar = true;
 		}
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		

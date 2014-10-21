@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NoteRowScript.cs">
     <Files>
-      <File FileName="Assets\NoteRowScript.cs" Line="115" Column="23" />
-      <File FileName="Assets\CharacterDriver.cs" Line="61" Column="1" />
-      <File FileName="Assets\NoteScript.cs" Line="23" Column="2" />
+      <File FileName="Assets\NoteRowScript.cs" Line="97" Column="7" />
+      <File FileName="Assets\CharacterDriver.cs" Line="1" Column="1" />
+      <File FileName="Assets\NoteScript.cs" Line="1" Column="1" />
       <File FileName="Assets\ObjectLabel.cs" Line="1" Column="1" />
-      <File FileName="Assets\drag.cs" Line="13" Column="1" />
+      <File FileName="Assets\drag.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
