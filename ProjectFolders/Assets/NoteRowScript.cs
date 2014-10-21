@@ -15,7 +15,6 @@ public class NoteRowScript : MonoBehaviour {
 	void Start () {
 		notes = new ArrayList();
 		noteIndex = 0;
-
 		Invoke("uncheckLight", 0);
 		//Loop the music
 		InvokeRepeating("playNotes", 0, 8);
@@ -88,6 +87,7 @@ public class NoteRowScript : MonoBehaviour {
 			//If space is pressed, translate character as well
 			if(moveChar == true){
 				cd.playMode = true;
+				Debug.Log(characterIndex);
 			}
 			/*Debug.Log(ns.pitch);
 			Debug.Log(ns.value);
@@ -108,7 +108,8 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
-			//CharacterDriver t = targetChar.GetComponent<CharacterDriver>();
+			CharacterDriver t = targetChar.GetComponent<CharacterDriver>();
+			t.playMode = true;
 			moveChar = true;
 		}
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
