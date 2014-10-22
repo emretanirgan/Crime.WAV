@@ -24,7 +24,6 @@ public class drag : MonoBehaviour {
 		//targetObj.rigidbody.isKinematic = true;
 		targetObj = GameObject.FindGameObjectWithTag("targetPos");
 		Vector3 targetPos = targetObj.transform.position;
-		float xScale = targetObj.transform.localScale.x;
 		float discretization = 14 / 16.0f; 
 
 		//Create array of initial positions
@@ -94,8 +93,6 @@ public class drag : MonoBehaviour {
 		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
 
 		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-
 
 		transform.localScale = new Vector3(1, 1, 1);
 		Debug.Log (noteNum);

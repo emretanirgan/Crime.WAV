@@ -3,6 +3,7 @@ using System.Collections;
 
 public class NoteScript : MonoBehaviour {
 
+	public GameObject targetBurglar; 
 	public float value;
 	public string pitch;
 	int number;
@@ -16,10 +17,6 @@ public class NoteScript : MonoBehaviour {
 	private Vector3 offset;
 	
 	private GameObject copyObject; 
-	Vector3[] initXPos = new Vector3[16];
-	Vector3[] finalXPos = new Vector3[16];
-	Vector3 notePos = new Vector3 (-9.0f, 0.1f, -4.0f);
-	
 
 
 	ArrayList notes;
@@ -43,19 +40,22 @@ public class NoteScript : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-		GameObject targetObj = GameObject.FindGameObjectWithTag("targetPos");
+		GameObject targetObj0 = GameObject.FindGameObjectWithTag("targetPos0");
+		GameObject targetObj1 = GameObject.FindGameObjectWithTag("targetPos1");
+		GameObject targetObj2 = GameObject.FindGameObjectWithTag("targetPos2");
+		GameObject targetObj3 = GameObject.FindGameObjectWithTag("targetPos3");
 		
 		float gridCubeWidth = 1.0f, gridCubeHeight = 0.75f;
 		
 		Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-		Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-		
+
 		float posX = Mathf.Round(gameObject.transform.position.x/ gridCubeWidth) * gridCubeWidth ; 
 		float posY = Mathf.Round (gameObject.transform.position.y/gridCubeHeight) * gridCubeHeight;
 		
 		
 		//Check there is no object in position. If there is destroy 
-		Vector3 checkPosition = new Vector3 (posX, posY, targetObj.transform.position.z);
+		Vector3 checkPosition = new Vector3 (posX, posY, targetObj0.transform.position.z);
+		//Debug.Log (checkPosition);
 		GameObject[] placedObjects = GameObject.FindGameObjectsWithTag("Note");
 		
 		foreach(GameObject current in placedObjects)
@@ -66,7 +66,8 @@ public class NoteScript : MonoBehaviour {
 			}
 		}
 		
-		if (!targetObj.collider.bounds.Contains(checkPosition)) {
+		if (!targetObj0.collider.bounds.Contains(checkPosition) && !targetObj1.collider.bounds.Contains(checkPosition)
+		    && !targetObj2.collider.bounds.Contains(checkPosition) && !targetObj3.collider.bounds.Contains(checkPosition)) {
 			Destroy (gameObject);
 		}
 		
@@ -77,14 +78,22 @@ public class NoteScript : MonoBehaviour {
 			value = 8;
 		else if(gameObject.transform.localScale.x == 4.0f)
 			value = 4;
-		if (posY == 0.75f)
+		if (posY == 0.75f || posY == -1.5f || posY == -3.75f || posY == -6.0f)
 			pitch = "high";
-		else if(posY == 0)
+		else if(posY == 0 || posY == -2.25f || posY == -4.5f || posY == -6.75f)
 			pitch = "mid";
-		else if (posY == -0.75f)
+		else if (posY == -0.75f || posY == -3.0f || posY == -5.25f || posY == -7.5f)
 			pitch = "low";
-		gameObject.tag = "placedNote";
-		//Debug.Log (pitch);
+
+		if (targetObj0.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote0";
+		else if (targetObj1.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote1";
+		else if (targetObj2.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote2";
+		else if (targetObj3.collider.bounds.Contains(checkPosition))
+			gameObject.tag = "placedNote3";
+		//Debug.Log (gameObject.tag);
 
 	}
 	void OnMouseDown()

@@ -9,43 +9,30 @@ public class NoteRowScript : MonoBehaviour {
 	public int viewLimit = 3;
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
-
-	//Adding new notes
-	public string newPitch = "Pitch";
-	public string newVal = "Note Length";
-	public float notePos = -10;
+//	public GameObject targetChar; 
 
 	// Use this for initialization
 	void Start () {
 		notes = new ArrayList();
 		noteIndex = 0;
-
-		//Remove once block placing UI is implemented
-		/*GameObject[] blocks = GameObject.FindGameObjectsWithTag("Note");
-		for(int i=0; i<blocks.Length; i++){
-			notes.Add (blocks[i]);
-			Debug.Log(blocks[i]);
-		}*/
 		Invoke("uncheckLight", 0);
 		//Loop the music
-		InvokeRepeating("playNotes", 0, 4);
+		InvokeRepeating("playNotes", 0, 8);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		//Reorder based on x position 
-		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] blocks = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		for ( int m = 0; m < blocks.Length; ++m)
 		{
 			//Debug.Log(blocks[m].transform.position.x);
 			NoteScript note = blocks[m].GetComponent<NoteScript>();
 			notes.Insert(m, note);
-			Debug.Log(notes[m]);
 		}
-
-
 
 	}
 
@@ -53,7 +40,7 @@ public class NoteRowScript : MonoBehaviour {
 		//Play one iteration of the current notes
 		float noteDelay = 0;
 		noteIndex=0;
-		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 		for(int i=0; i<go.Length; i++){
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
@@ -67,7 +54,7 @@ public class NoteRowScript : MonoBehaviour {
 	void triggerAction() {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
-		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote");
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		for(int i=0; i<go.Length; i++)
 		{
@@ -99,8 +86,16 @@ public class NoteRowScript : MonoBehaviour {
 			cd.animate (ns.pitch, ns.value);
 			//Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
+
 			if(moveChar == true){
-				cd.playMode = true;
+				for (int i = 0; i< 4; ++i)
+				{
+					GameObject b = GameObject.FindGameObjectWithTag("Character"+i.ToString());
+					CharacterDriver c = b.GetComponent<CharacterDriver>();
+					c.playMode = true;
+				}
+				//cd.playMode = true;
+				Debug.Log(characterIndex);
 			}
 			/*Debug.Log(ns.pitch);
 			Debug.Log(ns.value);
@@ -110,8 +105,6 @@ public class NoteRowScript : MonoBehaviour {
 		//Debug.Log(ns.pitch);
 		//Debug.Log(ns.value);
 		//Debug.Log(noteIndex);
-	
-
 	}
 
 	void OnGUI(){
@@ -122,7 +115,6 @@ public class NoteRowScript : MonoBehaviour {
 		if (GUILayout.Button("Play"))
 		{
 			moveChar = true;
-
 		}
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		
