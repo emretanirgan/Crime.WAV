@@ -67,15 +67,24 @@ public class CharacterDriver : MonoBehaviour {
 		switch(pitch){
 		case("hi"):
 			status = 2;
-			note = 2 + burglar_num*3;
+			if(burglar_num == 0) {note = 12;}
+			if(burglar_num == 1) {note = 9;}
+			if(burglar_num == 2) {note = 5;}
+			if(burglar_num == 3) {note = 2;}
 			break;
 		case("high"):
 			status = 2;
-			note = 2 + burglar_num*3;
+			if(burglar_num == 0) {note = 12;}
+			if(burglar_num == 1) {note = 9;}
+			if(burglar_num == 2) {note = 5;}
+			if(burglar_num == 3) {note = 2;}
 			break;
 		case("low"):
 			status = 3;
-			note = 0 + burglar_num*3;
+			if(burglar_num == 0) {note = 11;}
+			if(burglar_num == 1) {note = 7;}
+			if(burglar_num == 2) {note = 4;}
+			if(burglar_num == 3) {note = 0;}
 			break;
 		case("dead"):
 			status = -1;
@@ -83,11 +92,10 @@ public class CharacterDriver : MonoBehaviour {
 			break;
 		default:
 			status = 1;
-			note = 1 + burglar_num*3;
 			//renderer.material.mainTexture = runTex;
 			break;
 		}
-		if(status > 0){
+		if(status > 1){
 //			Debug.Log(AudioSettings.dspTime);
 			playAudio(note, value);
 		}
@@ -96,6 +104,7 @@ public class CharacterDriver : MonoBehaviour {
 	public void playAudio(int note, float value){
 //		print("play on");
 		audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
+		Debug.Log (audio.pitch);
 		audio.Play();
 		double t0 = AudioSettings.dspTime;
 		audio.SetScheduledEndTime(t0+(4.0f/value));
