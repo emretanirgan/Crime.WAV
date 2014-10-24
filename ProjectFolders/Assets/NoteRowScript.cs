@@ -89,16 +89,16 @@ public class NoteRowScript : MonoBehaviour {
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 
 			cd.animate (ns.pitch, ns.value);
-			//Debug.Log(ns.pitch);
+			Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
 
 			if(moveChar == true){
-				for (int i = 0; i< 4; ++i)
+				/*for (int i = 0; i< 4; ++i)
 				{
 					GameObject b = GameObject.FindGameObjectWithTag("Character"+i.ToString());
 					CharacterDriver c = b.GetComponent<CharacterDriver>();
 					c.playMode = true;
-				}
+				}*/
 				//GameObject b = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 				//CharacterDriver c = b.GetComponent<CharacterDriver>();
 				//c.playMode = true;
@@ -138,6 +138,7 @@ public class NoteRowScript : MonoBehaviour {
 					Debug.Log(loseIndex);
 					Invoke("loseChar", loseIndex/2.0f);
 				}
+				cd.playMode = true;
 				//Debug.Log(characterIndex);
 			}
 			noteIndex++;
@@ -147,17 +148,22 @@ public class NoteRowScript : MonoBehaviour {
 	void OnGUI(){
 		//Hacky position, change later
 		//GUILayout.BeginArea(new Rect(Screen.width / 4, Screen.height / 2 , Screen.width /2, 200));
-		GUILayout.BeginArea(new Rect(50, 500, 200, 200));
+		/*GUILayout.BeginArea(new Rect(50, 500, 200, 200));
 
 		if (GUILayout.Button("Play"))
 		{
 			//Hardcoded for now, but will have to discretize the obstacles for next week
 			GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 			moveChar = true;
+<<<<<<< HEAD
 
 
 		}
 		/*GUILayout.BeginArea(new Rect(50, 300, 200, 200));
+=======
+		}*/
+	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
+>>>>>>> 738ed5e8e7b15fbf7032662e246e5339f9d46e63
 		
 		newVal = GUILayout.TextField (newVal);
 		newPitch = GUILayout.TextField (newPitch);
@@ -177,6 +183,8 @@ public class NoteRowScript : MonoBehaviour {
 			notes.Add (note);
 
 		}*/
+
+	GUILayout.BeginArea(new Rect(20, 725, 100, 200));
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
 				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
