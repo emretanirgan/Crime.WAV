@@ -85,6 +85,7 @@ public class NoteScript : MonoBehaviour {
 		else if (posY == -0.75f || posY == -3.0f || posY == -5.25f || posY == -7.5f)
 			pitch = "low";
 
+
 		if (targetObj0.collider.bounds.Contains(checkPosition))
 			gameObject.tag = "placedNote0";
 		else if (targetObj1.collider.bounds.Contains(checkPosition))
@@ -99,9 +100,9 @@ public class NoteScript : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//HARDCODED
-		Vector3 positionOfBlockUI = new Vector3 (-9.5f, 2.0f, -4.0f);
-		Vector3 positionOfBlockUI2 = new Vector3 (-8.0f, 2.0f, -4.0f);
-		Vector3 positionOfBlockUI3 = new Vector3 (-5.5f, 2.0f, -4.0f);
+		Vector3 positionOfBlockUI = new Vector3 (-20.0f, -2.0f, -4.0f);
+		Vector3 positionOfBlockUI2 = new Vector3 (-20.0f, -1.0f, -4.0f);
+		Vector3 positionOfBlockUI3 = new Vector3 (-20.0f, -3.0f, -4.0f);
 
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));

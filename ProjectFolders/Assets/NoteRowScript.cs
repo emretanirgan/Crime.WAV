@@ -84,18 +84,18 @@ public class NoteRowScript : MonoBehaviour {
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
 			cd.animate (ns.pitch, ns.value);
-			//Debug.Log(ns.pitch);
+			Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
 
 			if(moveChar == true){
-				for (int i = 0; i< 4; ++i)
+				/*for (int i = 0; i< 4; ++i)
 				{
 					GameObject b = GameObject.FindGameObjectWithTag("Character"+i.ToString());
 					CharacterDriver c = b.GetComponent<CharacterDriver>();
 					c.playMode = true;
-				}
-				//cd.playMode = true;
-				Debug.Log(characterIndex);
+				}*/
+				cd.playMode = true;
+				//Debug.Log(characterIndex);
 			}
 			/*Debug.Log(ns.pitch);
 			Debug.Log(ns.value);
@@ -110,12 +110,12 @@ public class NoteRowScript : MonoBehaviour {
 	void OnGUI(){
 		//Hacky position, change later
 		//GUILayout.BeginArea(new Rect(Screen.width / 4, Screen.height / 2 , Screen.width /2, 200));
-		GUILayout.BeginArea(new Rect(50, 500, 200, 200));
+		/*GUILayout.BeginArea(new Rect(50, 500, 200, 200));
 
 		if (GUILayout.Button("Play"))
 		{
 			moveChar = true;
-		}
+		}*/
 	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		
 		newVal = GUILayout.TextField (newVal);
@@ -136,6 +136,8 @@ public class NoteRowScript : MonoBehaviour {
 			notes.Add (note);
 
 		}*/
+
+	GUILayout.BeginArea(new Rect(20, 725, 100, 200));
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
 				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
