@@ -10,6 +10,7 @@ public class NoteRowScript : MonoBehaviour {
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
 //	public GameObject targetChar; 
+	public int loseIndex;
 
 	// Use this for initialization
 	void Start () {
@@ -55,7 +56,7 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
-
+		bool win = false;
 		for(int i=0; i<go.Length; i++)
 		{
 			//NoteScript note = blocks[i].GetComponent<NoteScript>();
@@ -68,21 +69,25 @@ public class NoteRowScript : MonoBehaviour {
 					go[j] = temp; 
 				}
 			}
-			
-			//Debug.Log(note.pitch);
 		}
-
-
-		//Debug.Log (go.Length); 
+	
 		if (noteIndex == go.Length){
+
 			cd.animate("dead", 8);
 			cd.playMode = false;
 			moveChar = false;
+			if(win){
+				Debug.Log("won");
+			}
+			else{
+				cd.resetPos();
+			}
 		}
 		else{
 
 			//GameObject go = (GameObject)notes[noteIndex];
 			NoteScript ns = go[noteIndex].GetComponent<NoteScript>();
+
 			cd.animate (ns.pitch, ns.value);
 			//Debug.Log(ns.pitch);
 			//If space is pressed, translate character as well
@@ -94,17 +99,49 @@ public class NoteRowScript : MonoBehaviour {
 					CharacterDriver c = b.GetComponent<CharacterDriver>();
 					c.playMode = true;
 				}
-				//cd.playMode = true;
-				Debug.Log(characterIndex);
+				//GameObject b = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
+				//CharacterDriver c = b.GetComponent<CharacterDriver>();
+				//c.playMode = true;
+
+				//Win/Loss condition check
+
+				loseIndex = -1;
+				for (int i=0; i<go.Length; i++){
+					//Debug.Log(go.Length);
+					NoteScript nsc = go[i].GetComponent<NoteScript>();
+					switch(i){
+					case 0:
+						win = (nsc.pitch == "mid" && nsc.value == 8);
+						break;
+					case 1:
+						win = (nsc.pitch == "high" && nsc.value == 8);
+						break;
+					case 2:
+						win = (nsc.pitch == "mid" && nsc.value == 8);
+						break;
+					case 3:
+						win = (nsc.pitch == "low" && nsc.value == 8);
+						break;
+					case 4:
+						win = (nsc.pitch == "mid" && nsc.value == 8);
+						break;
+					case 5:
+						win = (nsc.pitch == "high" && nsc.value == 8);
+						break;
+					}
+					if (!win){
+						loseIndex = i;
+						break;
+					}
+				}
+				if(!win){
+					Debug.Log(loseIndex);
+					Invoke("loseChar", loseIndex/2.0f);
+				}
+				//Debug.Log(characterIndex);
 			}
-			/*Debug.Log(ns.pitch);
-			Debug.Log(ns.value);
-			Debug.Log(noteIndex);*/
 			noteIndex++;
 		}
-		//Debug.Log(ns.pitch);
-		//Debug.Log(ns.value);
-		//Debug.Log(noteIndex);
 	}
 
 	void OnGUI(){
@@ -114,9 +151,13 @@ public class NoteRowScript : MonoBehaviour {
 
 		if (GUILayout.Button("Play"))
 		{
+			//Hardcoded for now, but will have to discretize the obstacles for next week
+			GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 			moveChar = true;
+
+
 		}
-	/*	GUILayout.BeginArea(new Rect(50, 300, 200, 200));
+		/*GUILayout.BeginArea(new Rect(50, 300, 200, 200));
 		
 		newVal = GUILayout.TextField (newVal);
 		newPitch = GUILayout.TextField (newPitch);
@@ -153,5 +194,12 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
 		Light light = gLight.GetComponent<Light>();
 		light.intensity = 0.0f;
+	}
+
+	void loseChar(){
+		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
+		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+		cd.resetPos();
+		moveChar = false;
 	}
 }
