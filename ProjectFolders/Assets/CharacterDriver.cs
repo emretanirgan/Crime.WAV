@@ -12,7 +12,6 @@ public class CharacterDriver : MonoBehaviour {
 	int note; //0 - C, 1 - C#, 2 - D, 3 - Eb
 			  //4 - E, 5 - F, 6 - F#, 7 - G
 			  //8 - G#, 9 - A, 10 - Bb, 11 - B
-	public Vector3 initialPos;
 
 	public Texture idleTex;
 	public Texture runTex;
@@ -29,7 +28,6 @@ public class CharacterDriver : MonoBehaviour {
 		playMode = false;
 		status = 0;
 		label.guiText.text = "I am standing.";
-		initialPos = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -106,17 +104,10 @@ public class CharacterDriver : MonoBehaviour {
 	public void playAudio(int note, float value){
 //		print("play on");
 		audio.pitch = Mathf.Pow(2, (note-4.0f)/12.0f);
-		//Debug.Log (audio.pitch);
+		Debug.Log (audio.pitch);
 		audio.Play();
 		double t0 = AudioSettings.dspTime;
 		audio.SetScheduledEndTime(t0+(4.0f/value));
-	}
-
-	public void resetPos(){
-		gameObject.transform.position = initialPos;
-		status = 0;
-		playMode = false;
-		label.guiText.text = "I am standing.";
 	}
 
 
