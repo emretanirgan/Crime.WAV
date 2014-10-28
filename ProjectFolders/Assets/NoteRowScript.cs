@@ -6,10 +6,11 @@ public class NoteRowScript : MonoBehaviour {
 	public ArrayList notes;
 	public int noteIndex;
 	public int characterIndex = -1;
-	public int viewLimit = 3;
+	public int viewLimit = 100;
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
 //	public GameObject targetChar; 
+	public int loseIndex;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,9 @@ public class NoteRowScript : MonoBehaviour {
 		float noteDelay = 0;
 		noteIndex=0;
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
+		GameObject slider = GameObject.FindGameObjectWithTag ("slidingBar");
+		SlidingBarScript sb = slider.GetComponent<SlidingBarScript>();
+		sb.moveMode = true;
 		for(int i=0; i<go.Length; i++){
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();
@@ -56,6 +60,7 @@ public class NoteRowScript : MonoBehaviour {
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
+		bool win = false;
 		for(int i=0; i<go.Length; i++)
 		{
 			//NoteScript note = blocks[i].GetComponent<NoteScript>();
@@ -78,6 +83,12 @@ public class NoteRowScript : MonoBehaviour {
 			cd.animate("dead", 8);
 			cd.playMode = false;
 			moveChar = false;
+			if(win){
+				Debug.Log("won");
+			}
+			else{
+				cd.resetPos();
+			}
 		}
 		else{
 
@@ -95,6 +106,194 @@ public class NoteRowScript : MonoBehaviour {
 					c.playMode = true;
 				}*/
 				cd.playMode = true;
+				//Win/Loss condition check
+
+				loseIndex = -1;
+				for (int i=0; i<go.Length; i++){
+					//Debug.Log(go.Length);
+					NoteScript nsc = go[i].GetComponent<NoteScript>();
+					if (characterIndex == 0){
+						switch(i){
+						case 0:
+								win = (nsc.pitch == "mid" && nsc.value == 8);
+								break;
+						case 1:
+								win = (nsc.pitch == "high" && nsc.value == 8);
+								break;
+						case 2:
+								win = (nsc.pitch == "mid" && nsc.value == 4);
+								break;
+						case 3:
+								win = (nsc.pitch == "high" && nsc.value == 16);
+								break;
+						case 4:
+								win = (nsc.pitch == "low" && nsc.value == 16);
+								break;
+						case 5:
+								win = (nsc.pitch == "high" && nsc.value == 8);
+								break;
+						case 6:
+								win = (nsc.pitch == "low" && nsc.value == 8);
+								break;
+						case 7:
+								win = (nsc.pitch == "mid" && nsc.value == 4);
+								break;
+						case 8:
+								win = (nsc.pitch == "low" && nsc.value == 8);
+								break;
+						case 9:
+								win = (nsc.pitch == "mid" && nsc.value == 4);
+								break;
+						case 10:
+								win = (nsc.pitch == "low" && nsc.value == 8);
+								break;
+						case 11:
+								win = (nsc.pitch == "high" && nsc.value == 4);
+								break;
+						case 12:
+								win = (nsc.pitch == "high" && nsc.value == 8);
+								break;
+							}
+					}
+					else if (characterIndex == 1){
+						switch(i){
+						case 0:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 1:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 2:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 3:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 4:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 5:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 6:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 7:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 8:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 9:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 10:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 11:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 12:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 13:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						}
+					}
+					else if (characterIndex == 2){
+						switch(i){
+						case 0:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 1:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 2:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 3:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 4:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 5:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 6:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 7:
+							win = (nsc.pitch == "low" && nsc.value == 8);
+							break;
+						case 8:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 9:
+							win = (nsc.pitch == "high" && nsc.value == 16);
+							break;
+						case 10:
+							win = (nsc.pitch == "low" && nsc.value == 16);
+							break;
+						case 11:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 12:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						}
+					}
+					else if (characterIndex == 3){
+						switch(i){
+						case 0:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 1:
+							win = (nsc.pitch == "low" && nsc.value == 4);
+							break;
+						case 2:
+							win = (nsc.pitch == "high" && nsc.value == 4);
+							break;
+						case 3:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 4:
+							win = (nsc.pitch == "mid" && nsc.value == 8);
+							break;
+						case 5:
+							win = (nsc.pitch == "high" && nsc.value == 8);
+							break;
+						case 6:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 7:
+							win = (nsc.pitch == "low" && nsc.value == 16);
+							break;
+						case 8:
+							win = (nsc.pitch == "high" && nsc.value == 16);
+							break;
+						case 9:
+							win = (nsc.pitch == "high" && nsc.value == 16);
+							break;
+						case 10:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						case 11:
+							win = (nsc.pitch == "mid" && nsc.value == 4);
+							break;
+						}
+					}
+					if (!win){
+						loseIndex = i;
+						break;
+					}
+				}
+				if(!win){
+					Debug.Log(loseIndex);
+					Invoke("loseChar", loseIndex/2.0f);
+				}
+				//Debug.Log(characterIndex);
 				//Debug.Log(characterIndex);
 			}
 			/*Debug.Log(ns.pitch);
@@ -137,13 +336,13 @@ public class NoteRowScript : MonoBehaviour {
 
 		}*/
 
-	GUILayout.BeginArea(new Rect(20, 725, 100, 200));
+	GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/4 + 25, 100, 200));
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
 				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
 				Light light = gLight.GetComponent<Light>();
 				light.intensity = 0.5f;
-				Invoke("uncheckLight", 3);
+				Invoke("uncheckLight", 6);
 				viewLimit--;
 			}
 		}
@@ -155,5 +354,12 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");
 		Light light = gLight.GetComponent<Light>();
 		light.intensity = 0.0f;
+	}
+
+	void loseChar(){
+		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
+		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
+		cd.resetPos();
+		moveChar = false;
 	}
 }
