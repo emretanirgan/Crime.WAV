@@ -137,7 +137,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		}*/
 
-	GUILayout.BeginArea(new Rect(20, 725, 100, 200));
+		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4 + 25, 100, 200));
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
 				GameObject gLight = GameObject.FindGameObjectWithTag("globalLight");

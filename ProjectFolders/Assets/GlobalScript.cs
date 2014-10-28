@@ -21,7 +21,7 @@ public class GlobalScript : MonoBehaviour {
 	void OnGUI(){
 		//Hacky position, change later
 		//GUILayout.BeginArea(new Rect(Screen.width / 4, Screen.height / 2 , Screen.width /2, 200));
-		GUILayout.BeginArea(new Rect(20, 700, 100, 200));
+		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4, 100, 200));
 		
 		if (GUILayout.Button("Play"))
 		{
