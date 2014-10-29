@@ -68,9 +68,11 @@ public class NoteRowScript : MonoBehaviour {
 		sb.moveMode = true;
 		if (listenNotes == true){
 			for(int i=0; i<solValues.Length; i++){
+				Debug.Log (noteDelay);
 				Invoke ("triggerAction", noteDelay);
-				noteDelay += 4/solValues[i];
+				noteDelay += 4.0f/solValues[i];
 			}
+			Invoke ("triggerAction", noteDelay-0.01f);
 			return;
 		}
 
@@ -97,12 +99,20 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 
 		if(listenNotes){
-			if(noteIndex < solValues.Length){
-				cd.animate (solPitches[noteIndex], solValues[noteIndex]);
-				noteIndex++;
+			if(noteIndex == solValues.Length){
+				listenNotes = false;
+				cd.playMode = false;
+				cd.resetPos();
+				cd.renderer.enabled = true;
 			}
 			else{
-				listenNotes = false;
+			//if(noteIndex < solValues.Length){
+				cd.playMode = true;
+				cd.renderer.enabled = false;
+				cd.animate (solPitches[noteIndex], solValues[noteIndex]);
+				noteIndex++;
+			//}
+			//else{
 			}
 			return;
 		}
@@ -132,6 +142,7 @@ public class NoteRowScript : MonoBehaviour {
 			moveChar = false;
 			if(win){
 				Debug.Log("won");
+				//Load the win screen here
 			}
 			else{
 				cd.resetPos();
