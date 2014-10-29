@@ -4,6 +4,7 @@ using System.Collections;
 public class NoteRowScript : MonoBehaviour {
 
 	public ArrayList notes;
+	public ArrayList correctNotes;
 	public int noteIndex;
 	public int characterIndex = -1;
 	public int viewLimit = 100;
@@ -14,6 +15,7 @@ public class NoteRowScript : MonoBehaviour {
 	public int loseIndex;
 	public string[] solPitches;
 	public int[] solValues;
+	public bool listenNotes = false;
 
 
 	// Use this for initialization
@@ -40,7 +42,6 @@ public class NoteRowScript : MonoBehaviour {
 			solPitches = new string[]{"mid", "low", "high", "mid", "mid", "high", "mid", "low", "high", "mid", "mid"};
 			solValues = new int[]{8,4,4,4,8,8,4,16,16,4,4};
 		}
-
 	}
 	
 	// Update is called once per frame
@@ -62,10 +63,18 @@ public class NoteRowScript : MonoBehaviour {
 		//Play one iteration of the current notes
 		float noteDelay = 0;
 		noteIndex=0;
-		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 		GameObject slider = GameObject.FindGameObjectWithTag ("slidingBar");
 		SlidingBarScript sb = slider.GetComponent<SlidingBarScript>();
 		sb.moveMode = true;
+		if (listenNotes == true){
+			for(int i=0; i<solValues.Length; i++){
+				Invoke ("triggerAction", noteDelay);
+				noteDelay += 4/solValues[i];
+			}
+			return;
+		}
+
+		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
 		if(moveCharBegin){
 			moveChar = true;
 		}
@@ -82,9 +91,21 @@ public class NoteRowScript : MonoBehaviour {
 
 	void triggerAction() {
 
+
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
+
+		if(listenNotes){
+			if(noteIndex < solValues.Length){
+				cd.animate (solPitches[noteIndex], solValues[noteIndex]);
+				noteIndex++;
+			}
+			else{
+				listenNotes = false;
+			}
+			return;
+		}
 	
 		bool win = false;
 		for(int i=0; i<go.Length; i++)

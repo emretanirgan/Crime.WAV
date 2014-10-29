@@ -28,7 +28,7 @@ public class CharacterDriver : MonoBehaviour {
 		currentSpeed = 0;
 		playMode = false;
 		status = 0;
-		label.guiText.text = "I am standing.";
+		//label.guiText.text = "I am standing.";
 		initialPos = gameObject.transform.position;
 	}
 	
@@ -37,24 +37,24 @@ public class CharacterDriver : MonoBehaviour {
 		if (playMode){
 			switch(status){
 			case 2:
-				label.guiText.text = "I am jumping.";
+				//label.guiText.text = "I am jumping.";
 				renderer.material.mainTexture = jumpTex;
 				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);
 				break;
 			case 3:
-				label.guiText.text = "I am ducking.";
+				//label.guiText.text = "I am ducking.";
 				renderer.material.mainTexture = duckTex;
 				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);
 				break;
 			case -1:
-				label.guiText.text = "I got stuck!";
+				//label.guiText.text = "I got stuck!";
 				currentSpeed = 0.0f;
 				renderer.material.mainTexture = idleTex;
 				break;
 			default:
-				label.guiText.text = "I am running.";
+				//label.guiText.text = "I am running.";
 				renderer.material.mainTexture = runTex;
 				currentSpeed = characterSpeed;
 				//Debug.Log(currentSpeed);

@@ -37,6 +37,12 @@ public class GlobalScript : MonoBehaviour {
 		if (GUILayout.Button("Listen", style))
 		{
 			//ADDDDDDDDDDD
+			GameObject[] go = GameObject.FindGameObjectsWithTag("noteRow");
+			for (int i = 0; i< 4; ++i)
+			{
+				NoteRowScript ns = go[i].GetComponent<NoteRowScript>();
+				ns.listenNotes = true;
+			}
 		}
 		
 		if (GUILayout.Button("Play", style))
