@@ -15,7 +15,7 @@ public class SlidingBarScript : MonoBehaviour {
 		if (moveMode == true){
 			Vector3 pos = gameObject.transform.position;
 			gameObject.transform.position = new Vector3(pos.x + speed, pos.y, pos.z);
-			if (gameObject.transform.position.x >= 15) {
+			if (gameObject.transform.position.x >= 17) {
 				gameObject.transform.position = new Vector3(-15, pos.y, pos.z);
 			}
 		}

@@ -12,6 +12,8 @@ public class NoteRowScript : MonoBehaviour {
 	public bool moveCharBegin = false;
 //	public GameObject targetChar; 
 	public int loseIndex;
+	public string[] solPitches;
+	public int[] solValues;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,23 @@ public class NoteRowScript : MonoBehaviour {
 		Invoke("uncheckLight", 0);
 		//Loop the music
 		InvokeRepeating("playNotes", 0, 8);
+
+		if(characterIndex == 0){
+			solPitches = new string[]{"mid", "high", "mid", "high", "low", "high", "low", "mid", "low", "mid", "low", "high", "high"};
+			solValues = new int[]{8,8,4,16,16,8,8,4,8,4,8,4,8};
+		}
+		else if(characterIndex == 1){
+			solPitches = new string[]{"mid", "mid", "low", "mid", "mid", "low", "high", "mid", "low", "high", "mid", "low", "high", "low"};
+			solValues = new int[]{4,8,8,4,8,8,8,8,8,8,8,8,8,8};
+		}
+		else if(characterIndex == 2){
+			solPitches = new string[]{"mid", "low", "mid", "low", "high", "mid", "high", "low", "mid", "high", "low", "mid", "mid"};
+			solValues = new int[]{4,8,4,8,8,4,8,8,8,16,16,4,8};
+		}
+		else if(characterIndex == 3){
+			solPitches = new string[]{"mid", "low", "high", "mid", "mid", "high", "mid", "low", "high", "mid", "mid"};
+			solValues = new int[]{8,4,4,4,8,8,4,16,16,4,4};
+		}
 
 	}
 	
