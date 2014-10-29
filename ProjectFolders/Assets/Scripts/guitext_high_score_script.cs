@@ -11,7 +11,7 @@ public class guitext_high_score_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		guiText.text = "High Scores";
-		guiText.fontSize = 50;
+		guiText.fontSize = 70;
 	
 	}
 }

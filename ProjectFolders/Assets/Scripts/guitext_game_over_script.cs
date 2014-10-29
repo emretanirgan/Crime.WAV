@@ -12,7 +12,7 @@ public class guitext_game_over_script : MonoBehaviour {
 	void Update ()
 	{
 		guiText.text = "GAME OVER";
-		guiText.fontSize = 50;
+		guiText.fontSize = 70;
 	
 	}
 }

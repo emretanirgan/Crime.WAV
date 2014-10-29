@@ -11,7 +11,7 @@ public class guitext_select_level_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		guiText.text = "Select Level";
-		guiText.fontSize = 50;
+		guiText.fontSize = 70;
 
 	}
 }

@@ -26,6 +26,7 @@ public class GlobalScript : MonoBehaviour {
 
 		style.font = font; 
 
+
 		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4, 100, 200));
 
 		GUILayout.BeginVertical (); 

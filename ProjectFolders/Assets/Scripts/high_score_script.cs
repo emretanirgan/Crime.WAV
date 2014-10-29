@@ -18,6 +18,7 @@ public class high_score_script : MonoBehaviour {
 	void OnGUI (){
 
 		style.font = font;
+		style.fontSize = 30;
 	
 		GUILayout.BeginArea(new Rect(10, Screen.height / 2 , Screen.width -10, 200));
 		

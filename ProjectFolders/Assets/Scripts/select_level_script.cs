@@ -19,6 +19,7 @@ public class select_level_script : MonoBehaviour {
 	void OnGUI (){
 
 		style.font = font;
+		style.fontSize = 30;
 
 
 
