@@ -53,9 +53,12 @@ public class NoteRowScript : MonoBehaviour {
 		}
 		//Added this line so that we don't need an end note any more
 		Invoke("triggerAction", noteDelay);
+
+
 	}
 
 	void triggerAction() {
+
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
@@ -286,6 +289,10 @@ public class NoteRowScript : MonoBehaviour {
 					}
 					if (!win){
 						loseIndex = i;
+						int s = PlayerPrefs.GetInt ("currentScore") - 10;
+						PlayerPrefs.SetInt ("currentScore", s);		
+						int l = PlayerPrefs.GetInt ("currentLives") - 1;
+						PlayerPrefs.SetInt ("currentLives", l);						
 						break;
 					}
 				}
@@ -336,7 +343,7 @@ public class NoteRowScript : MonoBehaviour {
 
 		}*/
 
-		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4 + 25, 100, 200));
+	/*	GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4 + 25, 100, 200));
 
 		if (GUILayout.Button("See Map")){
 			if(viewLimit > 0){
@@ -348,7 +355,7 @@ public class NoteRowScript : MonoBehaviour {
 			}
 		}
 	
-		GUILayout.EndArea ();
+		GUILayout.EndArea ();*/
 	}
 
 	void uncheckLight(){

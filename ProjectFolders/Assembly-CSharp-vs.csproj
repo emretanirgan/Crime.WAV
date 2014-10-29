@@ -46,25 +46,31 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Block.cs" />
      <Compile Include="Assets\BurglarScreens\burglar1_script.cs" />
      <Compile Include="Assets\BurglarScreens\burglar2_script.cs" />
      <Compile Include="Assets\BurglarScreens\burglar3_script.cs" />
      <Compile Include="Assets\BurglarScreens\burglar4_script.cs" />
+     <Compile Include="Assets\BurglarScreens\guitext_meet_script.cs" />
      <Compile Include="Assets\BurglarScreens\meet_the_burglars_script.cs" />
-     <Compile Include="Assets\CharacterDriver.cs" />
-     <Compile Include="Assets\GlobalScript.cs" />
-     <Compile Include="Assets\NoteRowScript.cs" />
-     <Compile Include="Assets\NoteScript.cs" />
-     <Compile Include="Assets\ObjectLabel.cs" />
-     <Compile Include="Assets\SetPivot.cs" />
-     <Compile Include="Assets\SlidingBarScript.cs" />
-     <Compile Include="Assets\drag.cs" />
-     <Compile Include="Assets\game_over_script.cs" />
-     <Compile Include="Assets\high_score_script.cs" />
-     <Compile Include="Assets\joey_test_scene_script.cs" />
-     <Compile Include="Assets\main_menu_script.cs" />
-     <Compile Include="Assets\select_level_script.cs" />
+     <Compile Include="Assets\Scripts\Block.cs" />
+     <Compile Include="Assets\Scripts\CharacterDriver.cs" />
+     <Compile Include="Assets\Scripts\GlobalScript.cs" />
+     <Compile Include="Assets\Scripts\NoteRowScript.cs" />
+     <Compile Include="Assets\Scripts\NoteScript.cs" />
+     <Compile Include="Assets\Scripts\ObjectLabel.cs" />
+     <Compile Include="Assets\Scripts\SetPivot.cs" />
+     <Compile Include="Assets\Scripts\SlidingBarScript.cs" />
+     <Compile Include="Assets\Scripts\drag.cs" />
+     <Compile Include="Assets\Scripts\game_over_script.cs" />
+     <Compile Include="Assets\Scripts\guitext_game_over_script.cs" />
+     <Compile Include="Assets\Scripts\guitext_high_score_script.cs" />
+     <Compile Include="Assets\Scripts\guitext_main_menu_script.cs" />
+     <Compile Include="Assets\Scripts\guitext_script.cs" />
+     <Compile Include="Assets\Scripts\guitext_select_level_script.cs" />
+     <Compile Include="Assets\Scripts\high_score_script.cs" />
+     <Compile Include="Assets\Scripts\joey_test_scene_script.cs" />
+     <Compile Include="Assets\Scripts\main_menu_script.cs" />
+     <Compile Include="Assets\Scripts\select_level_script.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

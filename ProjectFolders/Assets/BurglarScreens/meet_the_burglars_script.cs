@@ -3,6 +3,8 @@ using System.Collections;
 
 public class meet_the_burglars_script : MonoBehaviour {
 	public Texture burglarImage; 
+	public GUIStyle style; 
+	public Font font;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,12 +16,8 @@ public class meet_the_burglars_script : MonoBehaviour {
 	}
 
 	void OnGUI (){
-		
-		GUILayout.BeginArea (new Rect (Screen.width / 2-50, Screen.height / 2 - 200, Screen.width - 10, 200));
-		
-		GUILayout.Label ("MEET THE BURGLARS", GUILayout.Width (200)); 
-		
-		GUILayout.EndArea ();
+
+		style.font = font;
 
 		Rect imagePos1 = new Rect (Screen.width / 2 - 250 , Screen.height / 2 - 150 , 
 		                           burglarImage.width / 2, burglarImage.height / 2);
@@ -29,7 +27,7 @@ public class meet_the_burglars_script : MonoBehaviour {
 		                             burglarImage.width / 8, 200));
 	// Load the main scene
 	// The scene needs to be added into build setting to be loaded!
-		if (GUILayout.Button("Burglar 1"))
+		if (GUILayout.Button("Burglar 1", style))
 		{
 			Application.LoadLevel("burglar1_scene");
 		}
@@ -39,7 +37,7 @@ public class meet_the_burglars_script : MonoBehaviour {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - 250 + burglarImage.width / 8, Screen.height / 2 - 150 + burglarImage.height / 2,
 		                             burglarImage.width / 8, 200));
 
-		if (GUILayout.Button("Burglar 2"))
+		if (GUILayout.Button("Burglar 2", style))
 		{
 			Application.LoadLevel ("burglar2_scene");
 		}
@@ -49,7 +47,7 @@ public class meet_the_burglars_script : MonoBehaviour {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - 250 + 2*burglarImage.width / 8, Screen.height / 2 - 150 + burglarImage.height / 2,
 		                             burglarImage.width / 8, 200));
 
-		if (GUILayout.Button("Burglar 3"))
+		if (GUILayout.Button("Burglar 3", style))
 		{
 			Application.LoadLevel ("burglar3_scene");
 		}
@@ -60,7 +58,7 @@ public class meet_the_burglars_script : MonoBehaviour {
 		                             burglarImage.width / 8, 200));
 
 
-		if (GUILayout.Button("Burglar 4"))
+		if (GUILayout.Button("Burglar 4", style))
 		{
 			Application.LoadLevel ("burglar4_scene");
 		}
@@ -70,7 +68,7 @@ public class meet_the_burglars_script : MonoBehaviour {
 		GUILayout.BeginArea(new Rect(Screen.width / 2 - 75, Screen.height / 2 + 150,
 		                             burglarImage.width / 8, 200));
 
-		if (GUILayout.Button("Menu"))
+		if (GUILayout.Button("Menu", style))
 		{
 			Application.LoadLevel("main_menu_scene");
 		}

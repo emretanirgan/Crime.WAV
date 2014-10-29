@@ -3,6 +3,8 @@ using System.Collections;
 
 public class high_score_script : MonoBehaviour {
 
+	public GUIStyle style; 
+	public Font font; 
 	// Use this for initialization
 	void Start () {
 	
@@ -15,38 +17,34 @@ public class high_score_script : MonoBehaviour {
 
 	void OnGUI (){
 
-		GUILayout.BeginArea (new Rect (Screen.width / 2-50, Screen.height / 2 - 100, Screen.width - 10, 200));
-		
-		GUILayout.Label ("HIGH SCORE", GUILayout.Width (200)); 
-		
-		GUILayout.EndArea ();
-		
-		
-		GUILayout.BeginArea(new Rect(10, Screen.height / 2 - 50, Screen.width -10, 200));
+		style.font = font;
+	
+		GUILayout.BeginArea(new Rect(10, Screen.height / 2 , Screen.width -10, 200));
 		
 		GUILayout.BeginVertical (); 
 		GUILayout.BeginHorizontal ();
 		
-		GUILayout.Label ("Name:", GUILayout.Width (200)); 
-		GUILayout.Label ("Score:", GUILayout.Width (200));
+		GUILayout.Label ("Name:", style); 
+		GUILayout.Label ("Score:", style);
 		
 		GUILayout.EndHorizontal (); 
 		
 		for (int m = 1; m < 6; m++) {
 			GUILayout.BeginHorizontal ();
 			
-			GUILayout.Label (getName (m), GUILayout.Width (200)); 
-			GUILayout.Label (getScore (m), GUILayout.Width (200));
+			GUILayout.Label (getName (m), style); 
+			GUILayout.Label (getScore (m),  style);
 			
 			GUILayout.EndHorizontal ();
 		}
 		
 		GUILayout.EndVertical (); 
-		
-		
+		GUILayout.EndArea();
+
+		GUILayout.BeginArea(new Rect(Screen.width / 2, 3.5f * Screen.height / 4.0f , Screen.width -10, 200));
 		// Load the main scene
 		// The scene needs to be added into build setting to be loaded!
-		if (GUILayout.Button("Menu"))
+		if (GUILayout.Button("Menu", style))
 		{
 			Application.LoadLevel("main_menu_scene");
 		}
