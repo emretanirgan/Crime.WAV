@@ -22,6 +22,7 @@ public class guitext_script : MonoBehaviour {
 
 	void OnGUI () 
 	{
+		guiText.fontSize = 30;
 
 		//string text1 = "Level: " + PlayerPrefs.GetInt ("currentLevel").ToString ();
 		//GUIStyle style = new GUIStyle ();

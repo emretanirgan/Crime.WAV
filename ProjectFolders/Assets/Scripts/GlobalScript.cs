@@ -25,17 +25,19 @@ public class GlobalScript : MonoBehaviour {
 	void OnGUI(){
 
 		style.font = font; 
+		style.fontSize = 30;
 
 
-		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4, 100, 200));
+
+		GUILayout.BeginArea(new Rect(20, 3.3f * Screen.height/ 4, 200, 200));
 
 		GUILayout.BeginVertical (); 
 
-		if (GUILayout.Button("Quit", style))
-		{
-			Application.LoadLevel("main_menu_scene");
-		}
 
+		if (GUILayout.Button("Listen", style))
+		{
+			//ADDDDDDDDDDD
+		}
 		
 		if (GUILayout.Button("Play", style))
 		{
@@ -63,6 +65,10 @@ public class GlobalScript : MonoBehaviour {
 				}*/
 			}
 
+		}
+		if (GUILayout.Button("Quit", style))
+		{
+			Application.LoadLevel("main_menu_scene");
 		}
 
  

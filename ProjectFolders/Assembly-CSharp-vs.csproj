@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\guitext_select_level_script.cs" />
      <Compile Include="Assets\Scripts\high_score_script.cs" />
      <Compile Include="Assets\Scripts\joey_test_scene_script.cs" />
+     <Compile Include="Assets\Scripts\jumrunduck_script.cs" />
      <Compile Include="Assets\Scripts\main_menu_script.cs" />
      <Compile Include="Assets\Scripts\select_level_script.cs" />
   </ItemGroup>
