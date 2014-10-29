@@ -9,6 +9,7 @@ public class NoteRowScript : MonoBehaviour {
 	public int viewLimit = 100;
 	//If space is pressed, the character also moves with the music
 	public bool moveChar = false;
+	public bool moveCharBegin = false;
 //	public GameObject targetChar; 
 	public int loseIndex;
 
@@ -45,6 +46,9 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject slider = GameObject.FindGameObjectWithTag ("slidingBar");
 		SlidingBarScript sb = slider.GetComponent<SlidingBarScript>();
 		sb.moveMode = true;
+		if(moveCharBegin){
+			moveChar = true;
+		}
 		for(int i=0; i<go.Length; i++){
 			//GameObject go = (GameObject)notes[i];
 			NoteScript ns = go[i].GetComponent<NoteScript>();

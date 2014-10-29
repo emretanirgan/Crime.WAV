@@ -54,7 +54,7 @@ public class GlobalScript : MonoBehaviour {
 			for (int i = 0; i< 4; ++i)
 			{
 				NoteRowScript ns = go[i].GetComponent<NoteRowScript>();
-				ns.moveChar = true;
+				ns.moveCharBegin = true;
 				/*if(go.Length > 0)
 				{
 					GameObject b = GameObject.FindGameObjectWithTag("Character"+i.ToString());
