@@ -5,11 +5,11 @@ public class guitext_script : MonoBehaviour {
 
 	
 	int score; 
-	int lives; 
+	float lives; 
 	int level;
 	// Use this for initialization
 	void Start () {
-		lives = PlayerPrefs.GetInt ("currentLives");
+		lives = PlayerPrefs.GetFloat ("currentLives");
 		score = PlayerPrefs.GetInt ("currentScore");
 		level = PlayerPrefs.GetInt ("currentLevel");
 
@@ -17,7 +17,10 @@ public class guitext_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		lives = PlayerPrefs.GetFloat ("currentLives");
+		score = PlayerPrefs.GetInt ("currentScore");
+		level = PlayerPrefs.GetInt ("currentLevel");
+		
 	}
 
 	void OnGUI () 
@@ -32,7 +35,7 @@ public class guitext_script : MonoBehaviour {
 
 		guiText.text = "Level: " + PlayerPrefs.GetInt ("currentLevel").ToString () 
 			+ "\n \nPoints: " + PlayerPrefs.GetInt ("currentScore").ToString ()
-				+ "\n \nLives: " + PlayerPrefs.GetInt ("currentLives").ToString () ;
+				+ "\n \nLives: " + PlayerPrefs.GetFloat ("currentLives").ToString () ;
 
 
 

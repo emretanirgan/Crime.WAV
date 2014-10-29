@@ -25,7 +25,7 @@ public class main_menu_script : MonoBehaviour {
 		// The scene needs to be added into build setting to be loaded!
 		if (GUILayout.Button("New Game", style))
 		{
-			PlayerPrefs.SetInt ("currentLives", 4);
+			PlayerPrefs.SetFloat ("currentLives", 4.0f);
 			PlayerPrefs.SetInt ("currentScore", 100);
 			PlayerPrefs.SetInt ("currentLevel", 1);
 			Application.LoadLevel("joey_test-scene");

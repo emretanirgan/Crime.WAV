@@ -10,13 +10,33 @@ Platform assembly: C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.
 Loading C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.055 seconds
+- Completed reload, in  0.053 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.798856 ms
+UnloadTime: 0.302350 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 507.
-Total: 1.942828 ms (FindLiveObjects: 0.052173 ms CreateObjectMapping: 0.026086 ms MarkObjects: 0.301067 ms  DeleteObjects: 0.038488 ms)
+Total: 0.547823 ms (FindLiveObjects: 0.013684 ms CreateObjectMapping: 0.007270 ms MarkObjects: 0.091517 ms  DeleteObjects: 0.011546 ms)
+
+mid
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+1.498307
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+low
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 

@@ -12,6 +12,7 @@ public class NoteRowScript : MonoBehaviour {
 //	public GameObject targetChar; 
 	public int loseIndex;
 
+
 	// Use this for initialization
 	void Start () {
 		notes = new ArrayList();
@@ -54,7 +55,6 @@ public class NoteRowScript : MonoBehaviour {
 		//Added this line so that we don't need an end note any more
 		Invoke("triggerAction", noteDelay);
 
-
 	}
 
 	void triggerAction() {
@@ -62,7 +62,7 @@ public class NoteRowScript : MonoBehaviour {
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		GameObject[] go = GameObject.FindGameObjectsWithTag("placedNote"+characterIndex.ToString());
-
+	
 		bool win = false;
 		for(int i=0; i<go.Length; i++)
 		{
@@ -91,6 +91,7 @@ public class NoteRowScript : MonoBehaviour {
 			}
 			else{
 				cd.resetPos();
+
 			}
 		}
 		else{
@@ -289,16 +290,14 @@ public class NoteRowScript : MonoBehaviour {
 					}
 					if (!win){
 						loseIndex = i;
-						int s = PlayerPrefs.GetInt ("currentScore") - 10;
-						PlayerPrefs.SetInt ("currentScore", s);		
-						int l = PlayerPrefs.GetInt ("currentLives") - 1;
-						PlayerPrefs.SetInt ("currentLives", l);						
 						break;
 					}
 				}
 				if(!win){
 					Debug.Log(loseIndex);
 					Invoke("loseChar", loseIndex/2.0f);
+					Invoke("updateScore", 0 );
+							
 				}
 				//Debug.Log(characterIndex);
 				//Debug.Log(characterIndex);
@@ -308,7 +307,8 @@ public class NoteRowScript : MonoBehaviour {
 			Debug.Log(noteIndex);*/
 			noteIndex++;
 		}
-		//Debug.Log(ns.pitch);
+	
+			//Debug.Log(ns.pitch);
 		//Debug.Log(ns.value);
 		//Debug.Log(noteIndex);
 	}
@@ -364,10 +364,18 @@ public class NoteRowScript : MonoBehaviour {
 		light.intensity = 0.0f;
 	}
 
+	void updateScore()
+	{
+		int s = PlayerPrefs.GetInt ("currentScore") -10;
+		PlayerPrefs.SetInt ("currentScore", s);		
+		float l = PlayerPrefs.GetFloat ("currentLives") - 1.0f;
+		PlayerPrefs.SetFloat ("currentLives", l);	
+	}
 	void loseChar(){
 		GameObject burglar = GameObject.FindGameObjectWithTag("Character"+characterIndex.ToString());
 		CharacterDriver cd = burglar.GetComponent<CharacterDriver>();
 		cd.resetPos();
 		moveChar = false;
+
 	}
 }
