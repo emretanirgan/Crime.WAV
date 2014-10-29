@@ -10,13 +10,23 @@ Platform assembly: C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.
 Loading C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Paula\Documents\PENN\CIS 568 - Game Practicum\Crime.WAV\ProjectFolders\Crime.WAV_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.058 seconds
+- Completed reload, in  0.054 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.336135 ms
+UnloadTime: 0.332714 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 501.
-Total: 0.785599 ms (FindLiveObjects: 0.020099 ms CreateObjectMapping: 0.009408 ms MarkObjects: 0.128723 ms  DeleteObjects: 0.017106 ms)
+Total: 0.549962 ms (FindLiveObjects: 0.013684 ms CreateObjectMapping: 0.007270 ms MarkObjects: 0.097932 ms  DeleteObjects: 0.011546 ms)
+
+UnloadTime: 0.870274 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 123.
+Total: 0.925013 ms (FindLiveObjects: 0.006842 ms CreateObjectMapping: 0.008125 ms MarkObjects: 0.104347 ms  DeleteObjects: 0.296363 ms)
+
+Application.Quit() only works in build, not in editor
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
