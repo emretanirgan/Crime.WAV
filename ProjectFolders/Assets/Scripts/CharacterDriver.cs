@@ -116,7 +116,8 @@ public class CharacterDriver : MonoBehaviour {
 		gameObject.transform.position = initialPos;
 		status = 0;
 		playMode = false;
-		label.guiText.text = "I am standing.";
+		//label.guiText.text = "I am standing.";
+
 	}
 
 
