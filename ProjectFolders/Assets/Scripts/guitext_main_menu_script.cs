@@ -16,6 +16,6 @@ public class guitext_main_menu_script : MonoBehaviour {
 	void OnGUI()
 	{		
 		guiText.text = "Crime.WAV";
-		guiText.fontSize = 50;
+		guiText.fontSize = 70;
 	}
 }

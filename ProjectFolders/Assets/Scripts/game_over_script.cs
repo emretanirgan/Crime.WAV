@@ -18,7 +18,7 @@ public class game_over_script : MonoBehaviour {
 	void OnGUI(){
 
 		style.font = font;
-		GUILayout.BeginArea(new Rect(0.9f * Screen.width / 2, Screen.height / 2 , Screen.width /2, 200));
+		GUILayout.BeginArea(new Rect(0.9f * Screen.width / 2, 3.0f * Screen.height / 4.0f , Screen.width /2, 200));
 
 		if (GUILayout.Button("Menu", style))
 		{

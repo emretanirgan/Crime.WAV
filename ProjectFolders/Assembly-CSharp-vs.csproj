@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\NoteRowScript.cs" />
      <Compile Include="Assets\Scripts\NoteScript.cs" />
      <Compile Include="Assets\Scripts\ObjectLabel.cs" />
-     <Compile Include="Assets\Scripts\SetPivot.cs" />
      <Compile Include="Assets\Scripts\SlidingBarScript.cs" />
      <Compile Include="Assets\Scripts\drag.cs" />
      <Compile Include="Assets\Scripts\game_over_script.cs" />

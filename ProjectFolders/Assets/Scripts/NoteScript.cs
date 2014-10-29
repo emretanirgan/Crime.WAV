@@ -100,9 +100,9 @@ public class NoteScript : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//HARDCODED
-		Vector3 positionOfBlockUI = new Vector3 (-20.0f, -2.0f, -4.0f);
-		Vector3 positionOfBlockUI2 = new Vector3 (-20.0f, -1.0f, -4.0f);
-		Vector3 positionOfBlockUI3 = new Vector3 (-20.0f, -3.0f, -4.0f);
+		Vector3 positionOfBlockUI = new Vector3 (-15.0f, 2.0f, -4.0f);
+		Vector3 positionOfBlockUI2 = new Vector3 (-13.0f, 2.0f, -4.0f);
+		Vector3 positionOfBlockUI3 = new Vector3 (-10.0f, 2.0f, -4.0f);
 
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
