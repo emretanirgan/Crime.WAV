@@ -142,6 +142,7 @@ public class NoteRowScript : MonoBehaviour {
 			moveChar = false;
 			if(win){
 				Debug.Log("won");
+				Application.LoadLevel("win_scene");
 				//Load the win screen here
 			}
 			else{

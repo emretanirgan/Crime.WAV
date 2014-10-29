@@ -43,6 +43,7 @@ public class main_menu_script : MonoBehaviour {
 			Application.LoadLevel ("meet_the_burglars_scene");
 		}
 		*/
+
 		if (GUILayout.Button("Exit", style))
 		{
 			Application.Quit();
