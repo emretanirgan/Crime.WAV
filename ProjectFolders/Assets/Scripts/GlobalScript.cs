@@ -25,6 +25,8 @@ public class GlobalScript : MonoBehaviour {
 	void OnGUI(){
 
 		style.font = font; 
+		style.fontSize = 30;
+
 
 
 		GUILayout.BeginArea(new Rect(20, 3.5f * Screen.height/ 4, 100, 200));
