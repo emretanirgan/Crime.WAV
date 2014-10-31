@@ -140,6 +140,7 @@ public class NoteRowScript : MonoBehaviour {
 			cd.animate("dead", 8);
 			cd.playMode = false;
 			moveChar = false;
+			moveCharBegin = false;
 			if(win){
 				Debug.Log("won");
 				Application.LoadLevel("win_scene");
